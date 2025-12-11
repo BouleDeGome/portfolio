@@ -1,0 +1,85 @@
+@media only screen and (max-width: 768px) {
+
+    /* En-tête */
+    header.topbar {
+        padding: 10px 0;
+    }
+
+    /* Logo et titre */
+    div#header1, div#header2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    img#logotitre {
+        margin-left: 0;
+    }
+
+    h1.titre {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    h2.soustitre {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* Contenu des sections */
+    section#patate div#gauche, section#patate div#droite,
+    section#carotte div#gauche, section#carotte div#droite,
+    section#courgette div#gauche, section#courgette div#droite,
+    section#obergine div.fraise, section#obergine div.football {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    img#datacenterimg, img#apropos, img#nodeserv.flotte,
+    img#webserv.flotte, img#mcserv.flotte {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    h1#titredatacenter, h1#haprps, h1#titreserv,
+    h1.framboise {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    p#pdtc, p#paprps, p#pserv {
+        font-size: 18px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Pied de page */
+    section#sectionfooter {
+        flex-direction: column;
+    }
+
+    div.divf p {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    h1#tf {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    a#footer {
+        font-size: 16px;
+        padding: 3% 10%;
+        display: inline-block;
+        margin: 10px auto;
+    }
+
+    /* YouTube iframe */
+    iframe.ytbt {
+        width: 100%;
+        height: 240px;
+        margin: 20px auto;
+    }
+
+}

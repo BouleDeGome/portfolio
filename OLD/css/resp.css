@@ -1,0 +1,137 @@
+/* Petits écrans (mobiles, moins de 768px) */
+@media screen and (max-width: 768px) {
+    
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    div#header.droite, div#header.gauche {
+        width: 90%;
+    }
+
+    img#header {
+        width: 30%;
+    }
+
+    h1#titre {
+        font-size: 28px;
+    }
+
+    h2.soustitre {
+        font-size: 22px;
+    }
+
+    section#presentation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section#presentation div {
+        width: 90%;
+    }
+
+    .present {
+        width: 80%;
+    }
+
+    .carousel-slide img {
+        width: 90%;
+    }
+
+    .prev, .next {
+        top: 50%;
+        font-size: 18px;
+    }
+
+    p.desc {
+        font-size: 16px;
+        width: 90%;
+    }
+
+    h1.patate {
+        font-size: 28px;
+    }
+
+    .svgfooter2 div {
+        top: -20%;
+    }
+}
+
+/* Tablettes et écrans moyens (entre 768px et 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    div#header.droite, div#header.gauche {
+        width: 48%;
+    }
+
+    img#header {
+        width: 60%;
+    }
+
+    .present {
+        width: 60%;
+    }
+
+    section#presentation div {
+        width: 45%;
+    }
+
+    .carousel-slide img {
+        width: 75%;
+    }
+
+    p.desc {
+        font-size: 18px;
+        width: 85%;
+    }
+
+    h1.patate {
+        font-size: 30px;
+    }
+
+    .svgfooter2 div {
+        top: -20%;
+    }
+}
+
+/* Très petits écrans (moins de 480px) */
+@media screen and (max-width: 480px) {
+
+    h1#titre {
+        font-size: 24px;
+    }
+
+    h2.soustitre {
+        font-size: 20px;
+    }
+
+    h1.patate {
+        font-size: 24px;
+    }
+
+    p.desc {
+        font-size: 14px;
+    }
+
+    .ligne, .ligned, .lignep {
+        width: 80%;
+    }
+
+    a.header {
+        font-size: 20px;
+    }
+
+    footer h1.footer {
+        font-size: 16px;
+    }
+
+    .carousel-slide img {
+        width: 95%;
+    }
+
+    .svgfooter2 div {
+        top: -25%;
+    }
+}

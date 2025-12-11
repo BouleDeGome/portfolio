@@ -1,0 +1,50 @@
+a#copy:hover {
+	color: rgba(31, 123, 6, 1);
+	transition: color 0.25s ease-out 100ms;
+	text-decoration-color: white;
+}
+
+#play:hover {
+	background-color: rgba(21, 21, 21, 0.8);
+	width: 35%;
+	border: 2px solid rgba(31, 123, 6, 1);
+	transition: background-color 0.25s ease-out 100ms;
+	transition: width 0.25s ease-out 100ms;
+}
+
+li.connexion {
+	transition: background-color 0.25s ease-out 100ms;
+}
+
+li.other {
+	transition: background-color 0.25s ease-out 100ms;
+}
+
+li.connexion:hover {
+	background-color: #175A04;
+}
+
+li.other:hover {
+	background-color: rgba(21, 21, 21, 0.8);
+}
+
+img#logo.header {
+	animation: float 2.5s ease-in-out 0s infinite;
+	transition: width 0.25s ease-out 100ms;
+}
+
+img#logo.header:hover {
+	width: 52.5%;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}

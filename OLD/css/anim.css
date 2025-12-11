@@ -1,0 +1,115 @@
+a.header {
+	transition: color 0.3s ease-in-out;
+}
+
+a.header:hover {
+	color: #158991;
+}
+
+.titoulo {
+	transition: color 0.3s ease-in-out;
+	animation: float 5s ease-in-out infinite;
+}
+
+.titoulo:hover {
+	color: #0f3f42;
+}
+
+img#header {
+	transition: width 0.3s ease-in-out;
+}
+
+img#header:hover {
+	width: 60%;
+}
+
+@keyframes pagedebut {
+	0% {
+		padding-left: 2000px;
+	}
+	100% {
+		padding-left: 0;
+	}
+}
+
+div.gauche#header {
+	animation: float 5s ease-in-out infinite;	
+/*	animation: pagedebut 2s ease-in-out;*/
+}
+
+.present {
+	transition: width 0.3s ease-in-out;
+}
+
+.present:hover {
+	width: 45%;
+}
+
+.nav-link {
+	transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+	color: #c6c6c6;
+}
+
+a.doc {
+	transition: color 0.3s ease-in-out;
+}
+
+a.doc:hover {
+	color: #0f3f42;
+}
+
+/*div.page {
+	transition: width 0.3s ease-in-out;
+}
+
+div.page:hover {
+	width: 100%;
+}*/
+
+/*.ligne {
+	animation: float 2s ease-in-out infinite;
+}*/
+
+section {
+	animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+.popupjs {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.popupjs.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+    	opacity: .4;
+    } 
+    to {
+    	opacity: 1;
+    }
+}

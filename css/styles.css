@@ -57,3 +57,7 @@ button:focus {
 a {
     transition: all 0.3s ease;
 }
+
+a.veille {
+    color: #06b6d4;
+}

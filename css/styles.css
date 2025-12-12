@@ -61,3 +61,7 @@ a {
 a.veille {
     color: #06b6d4;
 }
+
+a#articleredirect {
+    padding: 2%;
+}

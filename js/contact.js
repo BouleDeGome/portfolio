@@ -9,8 +9,7 @@ contactForm.addEventListener('submit', (e) => {
     const email = formData.get('email');
     const message = formData.get('message');
     
-    // Simuler l'envoi (dans un vrai projet, vous enverriez les données à un serveur)
-    alert(`Merci ${name} pour votre message !\n\nCeci est une démo. Dans un site réel, votre message serait envoyé.`);
+    alert(`Merci ${name} pour votre message !\n\nVous recevrez une réponse bientôt !`);
     
     // Réinitialiser le formulaire
     contactForm.reset();

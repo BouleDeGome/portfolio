@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        }
+
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+
+        /* Animation pour les cartes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-950">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-gray-900 border-r border-gray-800 transition-all duration-300">
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-8">
+                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                    </svg>
+                    <h1 class="text-xl text-white">Server Dashboard</h1>
+                </div>
+
+                <nav class="space-y-2">
+                    <button onclick="switchPage('overview')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-800 text-white transition-colors" data-page="overview">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <span>Vue d'ensemble</span>
+                    </button>
+                    <button onclick="switchPage('servers')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors" data-page="servers">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                        </svg>
+                        <span>Serveurs</span>
+                    </button>
+                    <button onclick="switchPage('alerts')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors" data-page="alerts">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+                        </svg>
+                        <span>Alertes</span>
+                    </button>
+                    <button onclick="switchPage('settings')" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors" data-page="settings">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>Paramètres</span>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-gray-900 border-b border-gray-800 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleSidebar()" class="p-2 hover:bg-gray-800 rounded-lg transition-colors">
+                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                        <div>
+                            <h2 id="page-title" class="text-xl text-white">Tableau de bord</h2>
+                            <p id="page-subtitle" class="text-sm text-gray-400">Surveillance en temps réel de vos serveurs</p>
+                        </div>
+                    </div>
+                    <button onclick="refreshData()" class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        Actualiser
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div id="page-content" class="fade-in"></div>
+        </main>
+    </div>
+
+    <script>
+        // Données mock
+        const servers = [
+            {
+                id: '1',
+                name: 'Serveur Web Principal',
+                status: 'online',
+                ip: '192.168.1.10',
+                location: 'Paris, France',
+                uptime: '45 jours',
+                cpu: 68,
+                memory: 75,
+                disk: 45,
+                networkIn: 125,
+                networkOut: 89,
+                lastUpdate: '30 sec',
+            },
+            {
+                id: '2',
+                name: 'Serveur Base de Données',
+                status: 'online',
+                ip: '192.168.1.20',
+                location: 'Paris, France',
+                uptime: '30 jours',
+                cpu: 42,
+                memory: 82,
+                disk: 67,
+                networkIn: 87,
+                networkOut: 54,
+                lastUpdate: '1 min',
+            },
+            {
+                id: '3',
+                name: 'Serveur API',
+                status: 'warning',
+                ip: '192.168.1.30',
+                location: 'Londres, UK',
+                uptime: '15 jours',
+                cpu: 89,
+                memory: 91,
+                disk: 34,
+                networkIn: 234,
+                networkOut: 178,
+                lastUpdate: '45 sec',
+            },
+            {
+                id: '4',
+                name: 'Serveur Stockage',
+                status: 'online',
+                ip: '192.168.1.40',
+                location: 'Amsterdam, NL',
+                uptime: '60 jours',
+                cpu: 23,
+                memory: 45,
+                disk: 88,
+                networkIn: 456,
+                networkOut: 723,
+                lastUpdate: '2 min',
+            },
+        ];
+
+        const alerts = [
+            {
+                id: '1',
+                type: 'critical',
+                title: 'CPU élevé détecté',
+                message: 'Le serveur API utilise 89% du CPU depuis 15 minutes',
+                server: 'Serveur API',
+                timestamp: 'Il y a 5 min',
+                status: 'active',
+            },
+            {
+                id: '2',
+                type: 'warning',
+                title: 'Mémoire RAM élevée',
+                message: 'Le serveur Base de Données utilise 82% de la mémoire RAM',
+                server: 'Serveur Base de Données',
+                timestamp: 'Il y a 12 min',
+                status: 'active',
+            },
+            {
+                id: '3',
+                type: 'warning',
+                title: 'Espace disque faible',
+                message: 'Le serveur Stockage a atteint 88% de capacité disque',
+                server: 'Serveur Stockage',
+                timestamp: 'Il y a 25 min',
+                status: 'active',
+            },
+            {
+                id: '4',
+                type: 'info',
+                title: 'Serveur redémarré',
+                message: 'Le serveur Web Principal a été redémarré avec succès',
+                server: 'Serveur Web Principal',
+                timestamp: 'Il y a 1 heure',
+                status: 'resolved',
+            },
+        ];
+
+        let currentPage = 'overview';
+        let selectedServer = servers[0];
+
+        // Fonctions utilitaires
+        function getMetricColor(value) {
+            if (value >= 80) return { text: 'text-red-500', bg: 'bg-red-500' };
+            if (value >= 60) return { text: 'text-yellow-500', bg: 'bg-yellow-500' };
+            return { text: 'text-green-500', bg: 'bg-green-500' };
+        }
+
+        function getStatusInfo(status) {
+            return status === 'online' 
+                ? { color: 'text-green-500', bg: 'bg-green-500/10', label: 'En ligne' }
+                : { color: 'text-yellow-500', bg: 'bg-yellow-500/10', label: 'Alerte' };
+        }
+
+        function getAlertStyles(type) {
+            const styles = {
+                critical: { bg: 'bg-red-500/10', border: 'border-red-500/20', text: 'text-red-500', iconBg: 'bg-red-500/10' },
+                warning: { bg: 'bg-yellow-500/10', border: 'border-yellow-500/20', text: 'text-yellow-500', iconBg: 'bg-yellow-500/10' },
+                info: { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-500', iconBg: 'bg-blue-500/10' },
+            };
+            return styles[type] || styles.info;
+        }
+
+        // Toggle sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('w-64');
+            sidebar.classList.toggle('w-0');
+        }
+
+        // Refresh data
+        function refreshData() {
+            console.log('Refreshing data...');
+            // Ici vous pourriez faire un appel API
+            alert('Données actualisées !');
+        }
+
+        // Switch page
+        function switchPage(page) {
+            currentPage = page;
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.page === page) {
+                    btn.classList.remove('text-gray-400', 'hover:bg-gray-800');
+                    btn.classList.add('bg-gray-800', 'text-white');
+                } else {
+                    btn.classList.remove('bg-gray-800', 'text-white');
+                    btn.classList.add('text-gray-400', 'hover:bg-gray-800');
+                }
+            });
+
+            // Update header
+            const titles = {
+                overview: { title: 'Tableau de bord', subtitle: 'Surveillance en temps réel de vos serveurs' },
+                servers: { title: 'Gestion des serveurs', subtitle: 'Liste complète de tous vos serveurs' },
+                alerts: { title: 'Alertes système', subtitle: 'Notifications et alertes en cours' },
+                settings: { title: 'Paramètres', subtitle: 'Configuration du dashboard' },
+            };
+            
+            document.getElementById('page-title').textContent = titles[page].title;
+            document.getElementById('page-subtitle').textContent = titles[page].subtitle;
+
+            // Render page content
+            const content = document.getElementById('page-content');
+            content.classList.remove('fade-in');
+            
+            setTimeout(() => {
+                if (page === 'overview') renderOverviewPage();
+                else if (page === 'servers') renderServersPage();
+                else if (page === 'alerts') renderAlertsPage();
+                else if (page === 'settings') renderSettingsPage();
+                content.classList.add('fade-in');
+            }, 50);
+        }
+
+        // Render Overview Page
+        function renderOverviewPage() {
+            const totalServers = servers.length;
+            const onlineServers = servers.filter(s => s.status === 'online').length;
+            const warningServers = servers.filter(s => s.status === 'warning').length;
+            const avgCpu = Math.round(servers.reduce((acc, s) => acc + s.cpu, 0) / totalServers);
+
+            const html = `
+                <div class="p-6 space-y-6">
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-blue-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${totalServers}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Total Serveurs</h3>
+                        </div>
+
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-green-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${onlineServers}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Serveurs en ligne</h3>
+                        </div>
+
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-yellow-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${warningServers}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Alertes</h3>
+                        </div>
+
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-purple-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${avgCpu}%</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">CPU Moyen</h3>
+                        </div>
+                    </div>
+
+                    <!-- Server Cards -->
+                    <div>
+                        <h3 class="text-lg text-white mb-4">Serveurs</h3>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            ${servers.map(server => renderServerCard(server)).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Selected Server Details -->
+                    ${renderServerDetails(selectedServer)}
+                </div>
+            `;
+
+            document.getElementById('page-content').innerHTML = html;
+        }
+
+        // Render Server Card
+        function renderServerCard(server) {
+            const statusInfo = getStatusInfo(server.status);
+            const cpuColor = getMetricColor(server.cpu);
+            const memColor = getMetricColor(server.memory);
+            const diskColor = getMetricColor(server.disk);
+            const isSelected = selectedServer.id === server.id;
+
+            return `
+                <button onclick="selectServer('${server.id}')" class="w-full text-left bg-gray-900 border ${isSelected ? 'border-blue-500 ring-2 ring-blue-500/20' : 'border-gray-800'} rounded-lg p-5 transition-all hover:border-gray-600">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-gray-800 rounded-lg">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white">${server.name}</h4>
+                                <p class="text-xs text-gray-500">${server.ip}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 px-2 py-1 rounded-full ${statusInfo.bg}">
+                            <svg class="w-3 h-3 ${statusInfo.color}" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span class="text-xs ${statusInfo.color} capitalize">${statusInfo.label}</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-4 text-xs">
+                        <div>
+                            <span class="text-gray-500">Localisation:</span>
+                            <p class="text-gray-300">${server.location}</p>
+                        </div>
+                        <div>
+                            <span class="text-gray-500">Uptime:</span>
+                            <p class="text-gray-300">${server.uptime}</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke-width="2"/>
+                                    <rect x="9" y="9" width="6" height="6" stroke-width="2"/>
+                                    <line x1="9" y1="1" x2="9" y2="4" stroke-width="2"/>
+                                    <line x1="15" y1="1" x2="15" y2="4" stroke-width="2"/>
+                                </svg>
+                                <span class="text-xs text-gray-400">CPU</span>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <span class="text-lg ${cpuColor.text}">${server.cpu}%</span>
+                                <div class="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden mb-1">
+                                    <div class="h-full ${cpuColor.bg} progress-bar" style="width: ${server.cpu}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="2"/>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" stroke-width="2"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke-width="2"/>
+                                </svg>
+                                <span class="text-xs text-gray-400">RAM</span>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <span class="text-lg ${memColor.text}">${server.memory}%</span>
+                                <div class="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden mb-1">
+                                    <div class="h-full ${memColor.bg} progress-bar" style="width: ${server.memory}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 19V5a2 2 0 012-2h8a2 2 0 012 2v14M6 19H4a2 2 0 01-2-2v-3a2 2 0 012-2h2m0 7h12M18 19h2a2 2 0 002-2v-3a2 2 0 00-2-2h-2m-8-5h4"/>
+                                </svg>
+                                <span class="text-xs text-gray-400">Disque</span>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <span class="text-lg ${diskColor.text}">${server.disk}%</span>
+                                <div class="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden mb-1">
+                                    <div class="h-full ${diskColor.bg} progress-bar" style="width: ${server.disk}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <svg class="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4-3-9s1.34-9 3-9"/>
+                                </svg>
+                                <span class="text-xs text-gray-400">Réseau</span>
+                            </div>
+                            <div class="text-xs text-gray-300">
+                                <div>↓ ${server.networkIn} MB/s</div>
+                                <div>↑ ${server.networkOut} MB/s</div>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            `;
+        }
+
+        // Render Server Details
+        function renderServerDetails(server) {
+            const cpuColor = getMetricColor(server.cpu);
+            const memColor = getMetricColor(server.memory);
+            const diskColor = getMetricColor(server.disk);
+
+            return `
+                <div class="bg-gray-900 border border-gray-800 rounded-lg p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-lg text-white">${server.name}</h3>
+                            <p class="text-sm text-gray-400">Métriques détaillées</p>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"/>
+                            </svg>
+                            Mis à jour il y a ${server.lastUpdate}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke-width="2"/>
+                                    <rect x="9" y="9" width="6" height="6" stroke-width="2"/>
+                                </svg>
+                                <h4 class="text-white">Utilisation CPU</h4>
+                            </div>
+                            <div class="flex items-end justify-between mb-4">
+                                <div>
+                                    <span class="text-3xl text-white">${server.cpu}%</span>
+                                    <p class="text-sm text-gray-500">Utilisation actuelle</p>
+                                </div>
+                                <div class="px-3 py-1 rounded-full ${server.cpu >= 80 ? 'bg-red-500/10 text-red-500' : server.cpu >= 60 ? 'bg-yellow-500/10 text-yellow-500' : 'bg-green-500/10 text-green-500'}">
+                                    ${server.cpu >= 80 ? 'Critique' : server.cpu >= 60 ? 'Élevé' : 'Normal'}
+                                </div>
+                            </div>
+                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full ${cpuColor.bg} progress-bar" style="width: ${server.cpu}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="2"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke-width="2"/>
+                                </svg>
+                                <h4 class="text-white">Mémoire RAM</h4>
+                            </div>
+                            <div class="flex items-end justify-between mb-4">
+                                <div>
+                                    <span class="text-3xl text-white">${server.memory}%</span>
+                                    <p class="text-sm text-gray-500">Utilisation actuelle</p>
+                                </div>
+                                <div class="px-3 py-1 rounded-full ${server.memory >= 80 ? 'bg-red-500/10 text-red-500' : server.memory >= 60 ? 'bg-yellow-500/10 text-yellow-500' : 'bg-green-500/10 text-green-500'}">
+                                    ${server.memory >= 80 ? 'Critique' : server.memory >= 60 ? 'Élevé' : 'Normal'}
+                                </div>
+                            </div>
+                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full ${memColor.bg} progress-bar" style="width: ${server.memory}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 19V5a2 2 0 012-2h8a2 2 0 012 2v14M6 19H4a2 2 0 01-2-2v-3a2 2 0 012-2h2m0 7h12M18 19h2a2 2 0 002-2v-3a2 2 0 00-2-2h-2"/>
+                                </svg>
+                                <h4 class="text-white">Espace Disque</h4>
+                            </div>
+                            <div class="flex items-end justify-between mb-4">
+                                <div>
+                                    <span class="text-3xl text-white">${server.disk}%</span>
+                                    <p class="text-sm text-gray-500">Utilisation actuelle</p>
+                                </div>
+                                <div class="px-3 py-1 rounded-full ${server.disk >= 80 ? 'bg-red-500/10 text-red-500' : server.disk >= 60 ? 'bg-yellow-500/10 text-yellow-500' : 'bg-green-500/10 text-green-500'}">
+                                    ${server.disk >= 80 ? 'Critique' : server.disk >= 60 ? 'Élevé' : 'Normal'}
+                                </div>
+                            </div>
+                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                                <div class="h-full ${diskColor.bg} progress-bar" style="width: ${server.disk}%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-950 border border-gray-800 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-4">
+                                <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.66 0 3-4 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4-3-9s1.34-9 3-9"/>
+                                </svg>
+                                <h4 class="text-white">Réseau</h4>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-gray-400">Entrant</span>
+                                        <span class="text-white">${server.networkIn} MB/s</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-orange-500 progress-bar" style="width: ${Math.min(server.networkIn / 5, 100)}%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-gray-400">Sortant</span>
+                                        <span class="text-white">${server.networkOut} MB/s</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-blue-500 progress-bar" style="width: ${Math.min(server.networkOut / 5, 100)}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Select server
+        function selectServer(serverId) {
+            selectedServer = servers.find(s => s.id === serverId);
+            renderOverviewPage();
+        }
+
+        // Render Servers Page
+        function renderServersPage() {
+            const html = `
+                <div class="p-6 space-y-6">
+                    <div class="bg-gray-900 border border-gray-800 rounded-lg p-4">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 relative">
+                                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                <input type="text" id="search-input" placeholder="Rechercher par nom, IP ou localisation..." class="w-full pl-10 pr-4 py-2 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="filterServers('all')" class="filter-btn px-4 py-2 rounded-lg bg-blue-600 text-white transition-colors" data-filter="all">
+                                    Tous (${servers.length})
+                                </button>
+                                <button onclick="filterServers('online')" class="filter-btn px-4 py-2 rounded-lg bg-gray-950 text-gray-400 border border-gray-700 hover:border-gray-600 transition-colors" data-filter="online">
+                                    En ligne (${servers.filter(s => s.status === 'online').length})
+                                </button>
+                                <button onclick="filterServers('warning')" class="filter-btn px-4 py-2 rounded-lg bg-gray-950 text-gray-400 border border-gray-700 hover:border-gray-600 transition-colors" data-filter="warning">
+                                    Alertes (${servers.filter(s => s.status === 'warning').length})
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-950 border-b border-gray-800">
+                                    <tr>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Serveur</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Statut</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Localisation</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">CPU</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Mémoire</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Disque</th>
+                                        <th class="px-6 py-4 text-left text-xs text-gray-400 uppercase tracking-wider">Uptime</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800" id="servers-table-body">
+                                    ${servers.map(renderServerTableRow).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke-width="2"/>
+                                </svg>
+                                <h3 class="text-white">CPU Moyen</h3>
+                            </div>
+                            <p class="text-2xl text-blue-500">${Math.round(servers.reduce((acc, s) => acc + s.cpu, 0) / servers.length)}%</p>
+                        </div>
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="2"/>
+                                </svg>
+                                <h3 class="text-white">Mémoire Moyenne</h3>
+                            </div>
+                            <p class="text-2xl text-green-500">${Math.round(servers.reduce((acc, s) => acc + s.memory, 0) / servers.length)}%</p>
+                        </div>
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 19V5a2 2 0 012-2h8a2 2 0 012 2v14"/>
+                                </svg>
+                                <h3 class="text-white">Disque Moyen</h3>
+                            </div>
+                            <p class="text-2xl text-purple-500">${Math.round(servers.reduce((acc, s) => acc + s.disk, 0) / servers.length)}%</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('page-content').innerHTML = html;
+
+            // Add search listener
+            document.getElementById('search-input').addEventListener('input', handleSearch);
+        }
+
+        // Render Server Table Row
+        function renderServerTableRow(server) {
+            const statusInfo = getStatusInfo(server.status);
+            const cpuColor = getMetricColor(server.cpu);
+            const memColor = getMetricColor(server.memory);
+            const diskColor = getMetricColor(server.disk);
+
+            return `
+                <tr class="hover:bg-gray-800/50 transition-colors">
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-gray-800 rounded-lg">
+                                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-white">${server.name}</div>
+                                <div class="text-sm text-gray-500">${server.ip}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full ${statusInfo.bg}">
+                            <svg class="w-4 h-4 ${statusInfo.color}" fill="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span class="text-sm ${statusInfo.color} capitalize">${statusInfo.label}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-gray-300">${server.location}</td>
+                    <td class="px-6 py-4">
+                        <span class="text-sm ${cpuColor.text}">${server.cpu}%</span>
+                    </td>
+                    <td class="px-6 py-4">
+                        <span class="text-sm ${memColor.text}">${server.memory}%</span>
+                    </td>
+                    <td class="px-6 py-4">
+                        <span class="text-sm ${diskColor.text}">${server.disk}%</span>
+                    </td>
+                    <td class="px-6 py-4 text-gray-300 text-sm">${server.uptime}</td>
+                </tr>
+            `;
+        }
+
+        // Filter servers
+        function filterServers(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filter) {
+                    btn.classList.remove('bg-gray-950', 'text-gray-400', 'border', 'border-gray-700');
+                    btn.classList.add('bg-blue-600', 'text-white');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-gray-950', 'text-gray-400', 'border', 'border-gray-700');
+                }
+            });
+
+            const filteredServers = filter === 'all' ? servers : servers.filter(s => s.status === filter);
+            document.getElementById('servers-table-body').innerHTML = filteredServers.map(renderServerTableRow).join('');
+        }
+
+        // Handle search
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredServers = servers.filter(server => 
+                server.name.toLowerCase().includes(searchTerm) ||
+                server.ip.includes(searchTerm) ||
+                server.location.toLowerCase().includes(searchTerm)
+            );
+            document.getElementById('servers-table-body').innerHTML = filteredServers.map(renderServerTableRow).join('');
+        }
+
+        // Render Alerts Page
+        function renderAlertsPage() {
+            const activeAlerts = alerts.filter(a => a.status === 'active');
+            const criticalAlerts = activeAlerts.filter(a => a.type === 'critical');
+            const warningAlerts = activeAlerts.filter(a => a.type === 'warning');
+
+            const html = `
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-red-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${criticalAlerts.length}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Alertes Critiques</h3>
+                        </div>
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-yellow-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${warningAlerts.length}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Avertissements</h3>
+                        </div>
+                        <div class="bg-gray-900 border border-gray-800 rounded-lg p-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="p-2 bg-green-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
+                                    </svg>
+                                </div>
+                                <span class="text-2xl text-white">${alerts.filter(a => a.status === 'resolved').length}</span>
+                            </div>
+                            <h3 class="text-sm text-gray-400">Résolues</h3>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg text-white mb-4">Alertes Actives</h3>
+                        <div class="space-y-3">
+                            ${activeAlerts.map(renderAlert).join('')}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg text-white mb-4">Alertes Résolues</h3>
+                        <div class="space-y-3">
+                            ${alerts.filter(a => a.status === 'resolved').map(renderResolvedAlert).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('page-content').innerHTML = html;
+        }
+
+        // Render Alert
+        function renderAlert(alert) {
+            const styles = getAlertStyles(alert.type);
+
+            return `
+                <div class="bg-gray-900 border ${styles.border} rounded-lg p-5 ${styles.bg}">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 ${styles.iconBg} rounded-lg flex-shrink-0">
+                            <svg class="w-6 h-6 ${styles.text}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between gap-4 mb-2">
+                                <div>
+                                    <h4 class="text-white mb-1">${alert.title}</h4>
+                                    <p class="text-sm text-gray-400">${alert.message}</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-3 py-1 rounded-full text-xs ${styles.bg} ${styles.text} uppercase">${alert.type}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-3">
+                                <div class="flex items-center gap-4 text-sm text-gray-500">
+                                    <span>${alert.server}</span>
+                                    <span>•</span>
+                                    <span>${alert.timestamp}</span>
+                                </div>
+                                <button class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-white text-sm rounded-lg transition-colors">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Resolved Alert
+        function renderResolvedAlert(alert) {
+            return `
+                <div class="bg-gray-900 border border-gray-800 rounded-lg p-5 opacity-60">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-gray-800 rounded-lg flex-shrink-0">
+                            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-start justify-between gap-4 mb-2">
+                                <div>
+                                    <h4 class="text-white mb-1 line-through">${alert.title}</h4>
+                                    <p class="text-sm text-gray-400">${alert.message}</p>
+                                </div>
+                                <div class="flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10">
+                                    <svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                    </svg>
+                                    <span class="text-xs text-green-500 uppercase">Résolu</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-500 mt-3">
+                                <span>${alert.server}</span>
+                                <span>•</span>
+                                <span>${alert.timestamp}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Settings Page
+        function renderSettingsPage() {
+            const html = `
+                <div class="p-6">
+                    <div class="bg-gray-900 border border-gray-800 rounded-lg p-8 text-center">
+                        <svg class="w-16 h-16 text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <h3 class="text-xl text-white mb-2">Page Paramètres</h3>
+                        <p class="text-gray-400">Cette page est en cours de développement</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('page-content').innerHTML = html;
+        }
+
+        // Initialize
+        switchPage('overview');
+    </script>
+</body>
+</html>

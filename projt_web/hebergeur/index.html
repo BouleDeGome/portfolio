@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostingPro - Hébergement Professionnel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0e1a',
+                        foreground: '#e1e7f5',
+                        card: '#111827',
+                        'card-foreground': '#e1e7f5',
+                        primary: '#3b82f6',
+                        'primary-foreground': '#ffffff',
+                        secondary: '#1e293b',
+                        muted: '#1e293b',
+                        'muted-foreground': '#64748b',
+                        accent: '#1e40af',
+                        border: 'rgba(59, 130, 246, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur">
+        <div class="container mx-auto px-4">
+            <div class="flex h-16 items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
+                        <span class="text-white font-bold text-xl">H</span>
+                    </div>
+                    <span class="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">HostingPro</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="nav-link active text-sm font-medium transition-colors relative group">
+                        Accueil
+                        <span class="nav-indicator"></span>
+                    </a>
+                    <a href="minecraft.html" class="nav-link text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Minecraft</a>
+                    <a href="nodejs.html" class="nav-link text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Node.js</a>
+                    <a href="web.html" class="nav-link text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Hébergement Web</a>
+                    <a href="contact.html" class="nav-link text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-2">
+                    <button id="theme-toggle" class="p-2 hover:bg-primary/10 rounded-md transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5"></i>
+                    </button>
+                    <a href="login.html" class="hidden md:flex gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white text-sm font-medium shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
+                        <i data-lucide="log-in" class="w-4 h-4"></i>
+                        Connexion
+                    </a>
+                    <button id="mobile-menu-toggle" class="md:hidden p-2 hover:bg-primary/10 rounded-md">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav id="mobile-menu" class="hidden md:hidden py-4 space-y-2 border-t border-border">
+                <a href="index.html" class="block px-4 py-2 text-sm font-medium text-primary bg-accent rounded-md">Accueil</a>
+                <a href="minecraft.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md transition-colors">Minecraft</a>
+                <a href="nodejs.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md transition-colors">Node.js</a>
+                <a href="web.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md transition-colors">Hébergement Web</a>
+                <a href="contact.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md transition-colors">Contact</a>
+                <a href="login.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-accent rounded-md transition-colors">
+                    <i data-lucide="log-in" class="w-4 h-4"></i>
+                    Connexion
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-bg bg-1"></div>
+            <div class="floating-bg bg-2"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 pt-16 pb-8 relative z-10">
+            <div class="text-center space-y-6 max-w-3xl mx-auto fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    Hébergement Pro
+                </h1>
+                <p class="text-xl text-muted-foreground fade-in-delay">
+                    Solutions d'hébergement performantes pour Minecraft, Node.js et vos sites web
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center pt-4 fade-in-delay-2">
+                    <a href="minecraft.html" class="px-6 py-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
+                        Voir les offres
+                    </a>
+                    <a href="contact.html" class="px-6 py-3 rounded-md border border-primary/50 hover:bg-primary/10 text-foreground font-medium transition-all hover:scale-105">
+                        Nous contacter
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 pt-12 fade-in-delay-3">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">99.9%</div>
+                        <div class="text-sm text-muted-foreground">Uptime</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">24/7</div>
+                        <div class="text-sm text-muted-foreground">Support</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">1000+</div>
+                        <div class="text-sm text-muted-foreground">Clients</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="container mx-auto px-4 py-16 relative z-10">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Nos Services
+                </h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    Choisissez la solution d'hébergement qui correspond à vos besoins
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <a href="minecraft.html" class="service-card block group">
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/20 transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-4 shadow-lg group-hover:rotate-12 transition-transform">
+                            <i data-lucide="server" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Serveurs Minecraft</h3>
+                        <p class="text-muted-foreground mb-4">Hébergement optimisé pour vos serveurs Minecraft avec support de tous les plugins</p>
+                        <span class="text-primary inline-flex items-center gap-2">
+                            En savoir plus →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Service Card 2 -->
+                <a href="nodejs.html" class="service-card block group">
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/20 transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center mb-4 shadow-lg group-hover:rotate-12 transition-transform">
+                            <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hébergement Node.js</h3>
+                        <p class="text-muted-foreground mb-4">Déployez vos applications Node.js avec une performance maximale</p>
+                        <span class="text-primary inline-flex items-center gap-2">
+                            En savoir plus →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Service Card 3 -->
+                <a href="web.html" class="service-card block group">
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-primary/20 transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-4 shadow-lg group-hover:rotate-12 transition-transform">
+                            <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hébergement Web</h3>
+                        <p class="text-muted-foreground mb-4">Hébergement web professionnel pour vos sites et applications</p>
+                        <span class="text-primary inline-flex items-center gap-2">
+                            En savoir plus →
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container mx-auto px-4 py-16 relative z-10">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Pourquoi nous choisir ?
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="shield" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Sécurisé</h3>
+                    <p class="text-muted-foreground">Protection DDoS et backups quotidiens automatiques</p>
+                </div>
+
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="zap" class="w-8 h-8 text-yellow-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Rapide</h3>
+                    <p class="text-muted-foreground">Infrastructure haute performance avec SSD NVMe</p>
+                </div>
+
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="users" class="w-8 h-8 text-blue-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Support 24/7</h3>
+                    <p class="text-muted-foreground">Équipe technique disponible à tout moment</p>
+                </div>
+
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="rocket" class="w-8 h-8 text-purple-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Déploiement instantané</h3>
+                    <p class="text-muted-foreground">Serveurs opérationnels en quelques secondes</p>
+                </div>
+
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="code" class="w-8 h-8 text-cyan-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Technologies modernes</h3>
+                    <p class="text-muted-foreground">Support des dernières versions et frameworks</p>
+                </div>
+
+                <div class="feature-card text-center space-y-3 p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center hover-rotate">
+                        <i data-lucide="database" class="w-8 h-8 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl">Bases de données</h3>
+                    <p class="text-muted-foreground">MySQL, PostgreSQL, MongoDB, Redis inclus</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container mx-auto px-4 pb-16 relative z-10">
+            <div class="cta-card rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 border-0 text-white shadow-2xl overflow-hidden relative">
+                <div class="absolute inset-0 opacity-30 cta-bg-animation"></div>
+                <div class="text-center py-12 px-6 relative z-10">
+                    <h2 class="text-3xl font-bold mb-4 text-white">
+                        Prêt à démarrer ?
+                    </h2>
+                    <p class="text-white/90 text-lg mb-8">
+                        Profitez de notre infrastructure de pointe dès aujourd'hui
+                    </p>
+                    <a href="minecraft.html" class="inline-block px-8 py-3 rounded-md bg-white text-purple-600 font-medium shadow-xl hover:scale-105 transition-transform">
+                        Découvrir nos offres
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border bg-card/30 mt-16 relative z-10">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">H</span>
+                        </div>
+                        <span class="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">HostingPro</span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">Solutions d'hébergement professionnelles</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="minecraft.html" class="hover:text-primary transition-colors">Minecraft</a></li>
+                        <li><a href="nodejs.html" class="hover:text-primary transition-colors">Node.js</a></li>
+                        <li><a href="web.html" class="hover:text-primary transition-colors">Web Hosting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Légal</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-primary transition-colors">CGV</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+                <p>&copy; 2024 HostingPro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

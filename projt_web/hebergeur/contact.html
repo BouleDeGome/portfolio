@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - HostingPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{background:'#0a0e1a',foreground:'#e1e7f5',card:'#111827',primary:'#3b82f6',secondary:'#1e293b',muted:'#1e293b','muted-foreground':'#64748b',accent:'#1e40af',border:'rgba(59, 130, 246, 0.2)'}}}}</script>
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur">
+        <div class="container mx-auto px-4">
+            <div class="flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
+                        <span class="text-white font-bold text-xl">H</span>
+                    </div>
+                    <span class="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">HostingPro</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Accueil</a>
+                    <a href="minecraft.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Minecraft</a>
+                    <a href="nodejs.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Node.js</a>
+                    <a href="web.html" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Hébergement Web</a>
+                    <a href="contact.html" class="nav-link active text-sm font-medium transition-colors relative"><span>Contact</span><span class="nav-indicator"></span></a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <button id="theme-toggle" class="p-2 hover:bg-primary/10 rounded-md transition-colors"><i data-lucide="moon" class="w-5 h-5"></i></button>
+                    <a href="login.html" class="hidden md:flex gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white text-sm font-medium shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
+                        <i data-lucide="log-in" class="w-4 h-4"></i>Connexion
+                    </a>
+                    <button id="mobile-menu-toggle" class="md:hidden p-2 hover:bg-primary/10 rounded-md"><i data-lucide="menu" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden py-4 space-y-2 border-t border-border">
+                <a href="index.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md">Accueil</a>
+                <a href="minecraft.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md">Minecraft</a>
+                <a href="nodejs.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md">Node.js</a>
+                <a href="web.html" class="block px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-accent rounded-md">Hébergement Web</a>
+                <a href="contact.html" class="block px-4 py-2 text-sm font-medium text-primary bg-accent rounded-md">Contact</a>
+                <a href="login.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary hover:bg-accent rounded-md"><i data-lucide="log-in" class="w-4 h-4"></i>Connexion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium mb-4">Contact</div>
+                <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">Contactez-nous</h1>
+                <p class="text-xl text-muted-foreground">Notre équipe est là pour vous aider 24/7</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Formulaire -->
+                <div class="p-8 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm fade-in-delay">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <i data-lucide="mail" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">Envoyez-nous un message</h2>
+                    </div>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nom complet</label>
+                            <div class="relative">
+                                <i data-lucide="user" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
+                                <input type="text" required placeholder="John Doe" class="form-input w-full pl-10 px-4 py-2 bg-secondary border border-border/50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <div class="relative">
+                                <i data-lucide="mail" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
+                                <input type="email" required placeholder="john@example.com" class="form-input w-full pl-10 px-4 py-2 bg-secondary border border-border/50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Sujet</label>
+                            <div class="relative">
+                                <i data-lucide="tag" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"></i>
+                                <select required class="form-input w-full pl-10 px-4 py-2 bg-secondary border border-border/50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all">
+                                    <option value="">Choisissez un sujet</option>
+                                    <option>Question technique</option>
+                                    <option>Support commercial</option>
+                                    <option>Problème de facturation</option>
+                                    <option>Demande de partenariat</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="5" required placeholder="Décrivez votre demande..." class="form-input w-full px-4 py-2 bg-secondary border border-border/50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-md shadow-lg shadow-blue-500/20 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info de contact -->
+                <div class="space-y-6 fade-in-delay-2">
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="message-circle" class="w-6 h-6 text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Support 24/7</h3>
+                                <p class="text-muted-foreground text-sm mb-3">Notre équipe est disponible à tout moment pour vous aider.</p>
+                                <a href="#" class="text-primary hover:underline text-sm">Ouvrir un ticket →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-6 h-6 text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Email</h3>
+                                <p class="text-muted-foreground text-sm mb-3">Pour les demandes générales et le support.</p>
+                                <a href="mailto:support@hostingpro.com" class="text-primary hover:underline text-sm">support@hostingpro.com →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="book-open" class="w-6 h-6 text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Documentation</h3>
+                                <p class="text-muted-foreground text-sm mb-3">Consultez nos guides et tutoriels détaillés.</p>
+                                <a href="#" class="text-primary hover:underline text-sm">Voir la documentation →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-colors">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="users" class="w-6 h-6 text-cyan-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Communauté</h3>
+                                <p class="text-muted-foreground text-sm mb-3">Rejoignez notre Discord pour échanger avec la communauté.</p>
+                                <a href="#" class="text-primary hover:underline text-sm">Rejoindre Discord →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="p-8 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-12 h-12 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+                        <i data-lucide="help-circle" class="w-6 h-6 text-yellow-500"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold">Questions fréquentes</h2>
+                        <p class="text-muted-foreground text-sm">Trouvez rapidement des réponses</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Comment commander un serveur ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Choisissez votre offre, cliquez sur "Choisir cette offre", créez un compte et suivez les étapes de paiement. Votre serveur sera automatiquement provisionné en quelques secondes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Quels moyens de paiement acceptez-vous ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Nous acceptons les cartes bancaires (Visa, Mastercard, American Express), PayPal, virements bancaires et certaines cryptomonnaies.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Puis-je changer d'offre à tout moment ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Oui, vous pouvez upgrader ou downgrader votre offre à tout moment depuis votre panel client. Le changement est effectif immédiatement et la facturation est ajustée au prorata.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Y a-t-il une garantie satisfait ou remboursé ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Oui, nous offrons une garantie satisfait ou remboursé de 14 jours. Si vous n'êtes pas satisfait, nous vous remboursons intégralement sans poser de questions.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Comment accéder au support technique ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Vous pouvez ouvrir un ticket depuis votre panel client, nous contacter par email à support@hostingpro.com, ou rejoindre notre serveur Discord pour une assistance en direct.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item p-4 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/30 transition-colors cursor-pointer">
+                        <button class="faq-question w-full flex items-center justify-between text-left">
+                            <span class="font-medium">Les backups sont-ils inclus ?</span>
+                            <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-muted-foreground transition-transform"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="mt-4 text-muted-foreground text-sm">Oui, tous nos serveurs incluent des backups quotidiens automatiques. Vous pouvez restaurer vos données en un clic depuis votre panel de contrôle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border bg-card/30 mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold">H</span>
+                        </div>
+                        <span class="font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">HostingPro</span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">Solutions d'hébergement professionnelles</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="minecraft.html" class="hover:text-primary transition-colors">Minecraft</a></li>
+                        <li><a href="nodejs.html" class="hover:text-primary transition-colors">Node.js</a></li>
+                        <li><a href="web.html" class="hover:text-primary transition-colors">Web Hosting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Légal</h4>
+                    <ul class="space-y-2 text-sm text-muted-foreground">
+                        <li><a href="#" class="hover:text-primary transition-colors">CGV</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+                <p>&copy; 2024 HostingPro. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

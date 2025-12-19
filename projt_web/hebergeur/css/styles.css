@@ -1,0 +1,322 @@
+/* Custom Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatBg {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(50px, 50px) scale(1.2);
+        opacity: 0.5;
+    }
+}
+
+@keyframes floatBg2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1.2);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50px, -50px) scale(1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes ctaBgAnimation {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Fade In Classes */
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.fade-in-delay-3 {
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.fade-in-up {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Floating Backgrounds */
+.floating-bg {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+}
+
+.bg-1 {
+    width: 400px;
+    height: 400px;
+    top: 0;
+    right: 0;
+    background: rgba(59, 130, 246, 0.1);
+    animation: floatBg 8s ease-in-out infinite;
+}
+
+.bg-2 {
+    width: 400px;
+    height: 400px;
+    bottom: 0;
+    left: 0;
+    background: rgba(139, 92, 246, 0.1);
+    animation: floatBg2 10s ease-in-out infinite;
+}
+
+/* Navigation */
+.nav-link {
+    position: relative;
+}
+
+.nav-link.active {
+    color: #3b82f6;
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+}
+
+.nav-link:not(.active)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:not(.active):hover::after {
+    width: 100%;
+}
+
+/* Service Cards */
+.service-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+.service-card:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+.service-card:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Feature Cards */
+.feature-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
+.feature-card:nth-child(5) { animation-delay: 0.5s; opacity: 0; }
+.feature-card:nth-child(6) { animation-delay: 0.6s; opacity: 0; }
+
+.feature-card:hover {
+    transform: scale(1.05);
+}
+
+.hover-rotate {
+    transition: transform 0.6s ease;
+}
+
+.feature-card:hover .hover-rotate {
+    transform: rotate(360deg);
+}
+
+/* CTA */
+.cta-card {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.cta-bg-animation {
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background-size: 200% 200%;
+    animation: ctaBgAnimation 5s ease infinite;
+}
+
+/* Pricing Cards */
+.pricing-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.pricing-card:nth-child(1) { animation-delay: 0.1s; }
+.pricing-card:nth-child(2) { animation-delay: 0.2s; }
+.pricing-card:nth-child(3) { animation-delay: 0.3s; }
+.pricing-card:nth-child(4) { animation-delay: 0.4s; }
+.pricing-card:nth-child(5) { animation-delay: 0.5s; }
+.pricing-card:nth-child(6) { animation-delay: 0.6s; }
+
+.pricing-card:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* Badge Animation */
+.badge-popular {
+    animation: fadeIn 0.5s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* Spec Items */
+.spec-item {
+    transition: all 0.2s ease;
+}
+
+.spec-item:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Login Page Animations */
+.login-container {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.login-info-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.login-info-card:nth-child(1) { animation-delay: 0.6s; }
+.login-info-card:nth-child(2) { animation-delay: 0.7s; }
+.login-info-card:nth-child(3) { animation-delay: 0.8s; }
+
+/* Loading Spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Smooth Transitions */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Colors */
+.dark {
+    --background: #0a0e1a;
+    --foreground: #e1e7f5;
+    --card: #111827;
+    --primary: #3b82f6;
+    --border: rgba(59, 130, 246, 0.2);
+}
+
+/* Light Mode Colors */
+.light {
+    --background: #ffffff;
+    --foreground: #1a1a1a;
+    --card: #f9fafb;
+    --primary: #3b82f6;
+    --border: rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+}
+
+/* Contact Form */
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* FAQ Accordion */
+.faq-item {
+    transition: all 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fade-in-delay-3 {
+        animation-delay: 0.4s;
+    }
+    
+    .floating-bg {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Utilities */
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}

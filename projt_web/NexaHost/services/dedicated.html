@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur Dédié - Dedicated Server | NexaHost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    
+    <!-- Navbar -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="flex items-center space-x-2">
+                    <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform">NexaHost</div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Accueil</a>
+                    <div class="relative services-dropdown">
+                        <button class="flex items-center space-x-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <span>Services</span>
+                            <svg class="w-4 h-4 transition-transform dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu absolute top-full mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 opacity-0 invisible transition-all duration-200">
+                            <a href="all.html" class="block px-4 py-2 text-blue-600 dark:text-blue-400 font-semibold hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors border-b border-gray-200 dark:border-gray-700">✨ Toutes les Offres</a>
+                            <div class="px-4 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Gaming</div>
+                            <a href="gaming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors">Vue d'ensemble</a>
+                            <a href="minecraft.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors pl-6">🎮 Minecraft</a>
+                            <a href="hytale.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors pl-6">⚔️ Hytale</a>
+                            <a href="fivem.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors pl-6">🚗 FiveM</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                            <div class="px-4 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cloud</div>
+                            <a href="cloud.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors">Vue d'ensemble</a>
+                            <a href="nodejs.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors pl-6">🟢 Node.js</a>
+                            <a href="web.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors pl-6">🌐 Web Hosting</a>
+                            <div class="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+                            <a href="vps.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors">💻 VPS</a>
+                            <a href="dedicated.html" class="block px-4 py-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors">🖥️ Serveur Dédié</a>
+                        </div>
+                    </div>
+                    <a href="../status.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Status</a>
+                    <a href="../contact.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                    <a href="../login.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Connexion</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="theme-toggle-mobile-dark-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-mobile-light-icon" class="hidden w-5 h-5 text-gray-700 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200">
+                        <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg id="menu-close-icon" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="../index.html" class="text-gray-700 dark:text-gray-200">Accueil</a>
+                    <div class="space-y-2">
+                        <div class="text-gray-700 dark:text-gray-200 font-semibold">Services</div>
+                        <a href="all.html" class="block pl-4 text-blue-600 dark:text-blue-400 font-semibold">✨ Toutes les Offres</a>
+                        <div class="pl-4 space-y-2">
+                            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Gaming</div>
+                            <a href="gaming.html" class="block pl-4 text-gray-600 dark:text-gray-300">Vue d'ensemble</a>
+                            <a href="minecraft.html" class="block pl-4 text-gray-600 dark:text-gray-300">Minecraft</a>
+                            <a href="hytale.html" class="block pl-4 text-gray-600 dark:text-gray-300">Hytale</a>
+                            <a href="fivem.html" class="block pl-4 text-gray-600 dark:text-gray-300">FiveM</a>
+                            <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase pt-2">Cloud</div>
+                            <a href="cloud.html" class="block pl-4 text-gray-600 dark:text-gray-300">Vue d'ensemble</a>
+                            <a href="nodejs.html" class="block pl-4 text-gray-600 dark:text-gray-300">Node.js</a>
+                            <a href="web.html" class="block pl-4 text-gray-600 dark:text-gray-300">Web Hosting</a>
+                        </div>
+                        <a href="vps.html" class="block pl-4 text-gray-600 dark:text-gray-300">VPS</a>
+                        <a href="dedicated.html" class="block pl-4 text-blue-600 dark:text-blue-400">Serveur Dédié</a>
+                    </div>
+                    <a href="../status.html" class="text-gray-700 dark:text-gray-200">Status</a>
+                    <a href="../contact.html" class="text-gray-700 dark:text-gray-200">Contact</a>
+                    <a href="../login.html" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-center">Connexion</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByb29tJTIwZGF0YSUyMGNlbnRlcnxlbnwxfHx8fDE3Njg4MzAwMDN8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Serveur Dédié" class="w-full h-96 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/90 to-purple-900/90"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Serveur Dédié</h1>
+            <p class="text-xl text-indigo-100 max-w-2xl mx-auto">Contrôle total de votre serveur à prix accessible</p>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto py-20 px-4">
+        <!-- Features Grid -->
+        <div class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">Pourquoi Choisir un Serveur Dédié ?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 text-center border border-gray-200 dark:border-gray-700 animate-fade-in">
+                    <div class="inline-block p-3 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg text-white mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Processeurs Solides</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Intel Xeon X5675 (6 cores) ou E3-1220 v5 (4 cores) avec Turbo Boost</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 text-center border border-gray-200 dark:border-gray-700 animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="inline-block p-3 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg text-white mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Stockage Fiable</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">584 GB SAS RAID ou 1 TB SSD selon le modèle</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 text-center border border-gray-200 dark:border-gray-700 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="inline-block p-3 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg text-white mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Sécurité Renforcée</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Protection DDoS et firewall pour sécuriser vos données</p>
+                </div>
+                <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 text-center border border-gray-200 dark:border-gray-700 animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="inline-block p-3 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg text-white mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Prix Imbattables</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Serveurs dédiés à partir de 54.99€/mois avec bande passante illimitée</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Server Plan -->
+        <div class="mb-20">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Nos Offres</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Des serveurs dédiés entièrement à votre disposition</p>
+            </div>
+            <div id="server-container"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="p-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl text-center">
+            <h3 class="text-3xl font-bold text-white mb-4">Besoin d'un Serveur Dédié ?</h3>
+            <p class="text-indigo-100 mb-8 max-w-2xl mx-auto">Contactez-nous pour discuter de vos besoins et obtenir une configuration personnalisée.</p>
+            <a href="../contact.html"><button class="px-8 py-3 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 transition-all text-lg">Contactez-nous</button></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">NexaHost</h3>
+                    <p class="text-gray-400 text-sm">Hébergement de qualité à taille humaine, basé en France.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="gaming.html" class="hover:text-blue-400 transition-colors">Gaming</a></li>
+                        <li><a href="cloud.html" class="hover:text-blue-400 transition-colors">Cloud</a></li>
+                        <li><a href="vps.html" class="hover:text-blue-400 transition-colors">VPS</a></li>
+                        <li><a href="dedicated.html" class="hover:text-blue-400 transition-colors">Serveur Dédié</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Société</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../contact.html" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                        <li><a href="../support.html" class="hover:text-blue-400 transition-colors">Support</a></li>
+                        <li><a href="../status.html" class="hover:text-blue-400 transition-colors">Status</a></li>
+                        <li><a href="../documentation.html" class="hover:text-blue-400 transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Légal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../legal.html" class="hover:text-blue-400 transition-colors">Mentions Légales</a></li>
+                        <li><a href="../privacy.html" class="hover:text-blue-400 transition-colors">Confidentialité</a></li>
+                        <li><a href="../terms.html" class="hover:text-blue-400 transition-colors">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 NexaHost. Tous droits réservés. • <a href="mailto:contact@nexahost.fr" class="hover:text-blue-400 transition-colors">contact@nexahost.fr</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dedicated-server.js"></script>
+</body>
+</html>

@@ -118,15 +118,9 @@ a#articleredirect {
     }
 
     /* Hide default cursor only on devices that support it */
-    html,
-    body,
-    a,
-    button,
-    input,
-    textarea,
-    .magnetic-btn {
+    /*.magnetic-btn {
         cursor: none;
-    }
+    }*/
 
     .cursor-dot {
         width: 5px;

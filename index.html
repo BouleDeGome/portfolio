@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth snap-y snap-mandatory md:snap-none">
 
 <head>
 
@@ -60,9 +60,11 @@
     </script>
 </head>
 
-<body class="min-h-screen bg-slate-950 text-slate-300 font-mono selection:bg-cyan-500/30 selection:text-cyan-200">
+<body
+    class="min-h-screen bg-slate-950 text-slate-300 font-mono selection:bg-cyan-500/30 selection:text-cyan-200 pb-20 md:pb-0">
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/30 z-50">
+    <header
+        class="hidden md:block fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/30 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="#hero" class="text-cyan-400 font-mono">
@@ -130,7 +132,7 @@
 
     <!-- Tête de page -->
     <section id="hero"
-        class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white border-b border-cyan-900/30 relative overflow-hidden">
+        class="min-h-screen md:min-h-0 snap-start pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white border-b border-cyan-900/30 relative overflow-hidden flex flex-col justify-center md:block">
         <div class="grid-bg"></div>
 
         <!-- Background Image -->
@@ -158,7 +160,7 @@
                     </svg>
                 </div>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6">
                 <span class="text-cyan-400">> </span><span id="typing-title"></span><span class="animate-pulse">_</span>
             </h1>
             <p class="text-xl mb-2 text-cyan-400">
@@ -215,7 +217,8 @@
 
 
     <!-- A propos Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal">
+    <section id="about"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 reveal flex flex-col justify-center md:block">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>À propos de moi
@@ -288,7 +291,8 @@
 
 
     <!-- Compétences Section -->
-    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal">
+    <section id="skills"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal flex flex-col justify-center md:block">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>Compétences
@@ -855,93 +859,69 @@
 
     </section>
 
+    <!-- Web Templates Section (Moved into Projects) -->
+    <!-- Removed Section Tag -->
+    <div class="max-w-7xl mx-auto mt-20">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+            <span class="text-cyan-400 font-mono">// </span>Mes Projets Web
+        </h2>
 
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-
-
-    <!-- Web Templates Section -->
-    <section id="templates" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-                <span class="text-cyan-400 font-mono">// </span>Mes Projets Web
-            </h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Template 1 -->
-                <a href="./projt_web/mstrhstg_template_site/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
+            <!-- Template 1 -->
+            <a href="./projt_web/mstrhstg_template_site/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
                         hover:border-cyan-700/50 transition-all block tilt-card">
-                    <div class="w-full h-52">
-                        <img alt="diapo1" src="./img/diapo1.webp"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                </a>
+                <div class="w-full h-52">
+                    <img alt="diapo1" src="./img/diapo1.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </a>
 
-                <!-- Template 2 -->
-                <a href="./projt_web/arx_template_site/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
+            <!-- Template 2 -->
+            <a href="./projt_web/arx_template_site/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
                         hover:border-cyan-700/50 transition-all block tilt-card">
-                    <div class="w-full h-52">
-                        <img alt="diapo2" src="./img/diapo2.webp"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                </a>
+                <div class="w-full h-52">
+                    <img alt="diapo2" src="./img/diapo2.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </a>
 
-                <!-- Template 3 -->
-                <a href="./projt_web/template_site_1/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
+            <!-- Template 3 -->
+            <a href="./projt_web/template_site_1/index.html" target="_blank" class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
                         hover:border-cyan-700/50 transition-all block tilt-card">
-                    <div class="w-full h-52">
-                        <img alt="diapo3" src="./img/diapo3.webp"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                </a>
+                <div class="w-full h-52">
+                    <img alt="diapo3" src="./img/diapo3.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </a>
 
-                <!-- Template 4 -->
-                <!-- <a href="./projt_web/clps_template_site/dashboard.html" target="_blank"
-                class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
-                        hover:border-cyan-700/50 transition-all block">
-                    <div class="w-full h-52">
-                        <img src="./img/diapo4.png" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                </a> -->
-
-                <!-- Template 5 -->
-                <!-- <a href="./projt_web/hebergeur/" target="_blank"
-                class="group bg-slate-900 rounded-lg border border-cyan-900/30 overflow-hidden 
-                        hover:border-cyan-700/50 transition-all block">
-                    <div class="w-full h-52">
-                        <img src="./img/diapo5.png" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                </a> -->
-
-            </div>
         </div>
+    </div>
 
-    </section>
+    <!-- Mon Projet Section (Moved into Projects) -->
+    <!-- Removed Section Tag -->
+    <div class="max-w-6xl mx-auto mt-20">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+            <span class="text-cyan-400 font-mono">// </span>Mon Projet Pro
+        </h2>
 
-    <!-- Mon Projet Section -->
-    <section id="project-pro" class="py-20 px-4 bg-slate-950 reveal">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
-                <span class="text-cyan-400 font-mono">// </span>Mon Projet Pro
-            </h2>
-
-            <div class="flex justify-center">
-                <a href="https://nexahost.fr" target="_blank" class="block w-full max-w-5xl">
-                    <img alt="NexaHost" src="./img/Présentation_Nexahost.drawio.webp" class="w-full rounded-xl shadow-2xl 
+        <div class="flex justify-center">
+            <a href="https://nexahost.fr" target="_blank" class="block w-full max-w-5xl">
+                <img alt="NexaHost" src="./img/Présentation_Nexahost.drawio.webp" class="w-full rounded-xl shadow-2xl 
                                 hover:scale-[1.02] transition-transform duration-500">
-                </a>
-            </div>
-
-            <div class="flex justify-center mt-10">
-                <a target="_blank" alt="Template-Site-Vitrine" href="./projt_web/NexaHost/presentation.html"
-                    class="glow-btn magnetic-btn inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-white shadow-lg">
-                    En savoir plus
-                </a>
-            </div>
+            </a>
         </div>
+
+        <div class="flex justify-center mt-10">
+            <a target="_blank" alt="Template-Site-Vitrine" href="./projt_web/NexaHost/presentation.html"
+                class="glow-btn magnetic-btn inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-white shadow-lg">
+                En savoir plus
+            </a>
+        </div>
+    </div>
     </section>
+
+
 
 
 
@@ -986,7 +966,8 @@
 
 
     <!-- Veille Section -->
-    <section id="veille" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal">
+    <section id="veille"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 reveal flex flex-col justify-center md:block">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>Veille Technologique
@@ -1013,10 +994,12 @@
                     <div
                         class="bg-slate-800 p-6 rounded-lg border border-cyan-900/30 hover:border-cyan-700/50 transition-all">
 
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold text-white">Proxmox VE 9.0 est disponible : découvrez les
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-2 md:gap-4">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Proxmox VE 9.0 est disponible :
+                                découvrez les
                                 nouveautés majeures et les conseils de mise à jour</h3>
-                            <span class="text-slate-400 font-mono shrink-0 whitespace-nowrap text-right">2025 →
+                            <span class="text-slate-400 font-mono text-sm md:text-base shrink-0 whitespace-nowrap">2025
+                                →
                                 2026</span>
                         </div>
 
@@ -1042,10 +1025,12 @@
                     <div
                         class="bg-slate-800 p-6 rounded-lg border border-cyan-900/30 hover:border-cyan-700/50 transition-all">
 
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold text-white">Debian 13 Trixie est disponible : voici les
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-2 md:gap-4">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Debian 13 Trixie est disponible : voici
+                                les
                                 principales nouveautés !</h3>
-                            <span class="text-slate-400 font-mono shrink-0 whitespace-nowrap text-right">2025 →
+                            <span class="text-slate-400 font-mono text-sm md:text-base shrink-0 whitespace-nowrap">2025
+                                →
                                 2026</span>
                         </div>
 
@@ -1074,10 +1059,12 @@
                     <div
                         class="bg-slate-800 p-6 rounded-lg border border-cyan-900/30 hover:border-cyan-700/50 transition-all">
 
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold text-white">Proxmox Datacenter Manager 1.0 est disponible :
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-2 md:gap-4">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Proxmox Datacenter Manager 1.0 est
+                                disponible :
                                 l'essentiel à savoir</h3>
-                            <span class="text-slate-400 font-mono shrink-0 whitespace-nowrap text-right">2026</span>
+                            <span
+                                class="text-slate-400 font-mono text-sm md:text-base shrink-0 whitespace-nowrap">2026</span>
                         </div>
 
                         <p class="text-slate-400 mt-3">
@@ -1104,10 +1091,12 @@
                     <div
                         class="bg-slate-800 p-6 rounded-lg border border-cyan-900/30 hover:border-cyan-700/50 transition-all">
 
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold text-white">Comment sécuriser une infrastructure Proxmox exposé
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-2 md:gap-4">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Comment sécuriser une infrastructure
+                                Proxmox exposé
                                 à Internet.</h3>
-                            <span class="text-slate-400 font-mono shrink-0 whitespace-nowrap text-right">2026</span>
+                            <span
+                                class="text-slate-400 font-mono text-sm md:text-base shrink-0 whitespace-nowrap">2026</span>
                         </div>
 
                         <p class="text-slate-400 mt-3">
@@ -1133,9 +1122,10 @@
                     <div
                         class="bg-slate-800 p-6 rounded-lg border border-cyan-900/30 hover:border-cyan-700/50 transition-all">
 
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold text-white">Exploit Database</h3>
-                            <span class="text-slate-400 font-mono shrink-0 whitespace-nowrap text-right">2025 →
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-2 md:gap-4">
+                            <h3 class="text-lg md:text-xl font-bold text-white">Exploit Database</h3>
+                            <span class="text-slate-400 font-mono text-sm md:text-base shrink-0 whitespace-nowrap">2025
+                                →
                                 aujourd'hui</span>
                         </div>
 
@@ -1165,7 +1155,8 @@
 
 
     <!-- CV Section -->
-    <section id="cv" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800">
+    <section id="cv"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-800 flex flex-col justify-center md:block">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>Mon CV
@@ -1229,7 +1220,8 @@
 
 
     <!-- Formation Section -->
-    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900">
+    <section id="education"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 flex flex-col justify-center md:block">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>Formation & Certifications
@@ -1317,7 +1309,8 @@
 
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800">
+    <section id="contact"
+        class="min-h-screen md:min-h-0 snap-start py-20 px-4 sm:px-6 lg:px-8 bg-slate-800 flex flex-col justify-center md:block">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
                 <span class="text-cyan-400 font-mono">// </span>Me Contacter
@@ -1481,6 +1474,55 @@
     <script src="./js/parallax.js"></script>
     <script src="./js/tilt.js"></script>
     <script src="./js/particles.js"></script>
+    <!-- Mobile Bottom Navigation -->
+    <div
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-950/90 backdrop-blur-xl border-t border-cyan-900/30 z-50 px-6 py-3">
+        <nav class="flex justify-between items-center max-w-sm mx-auto">
+            <a href="#hero"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition-colors group">
+                <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                </svg>
+                <span class="text-[10px] font-mono">Accueil</span>
+            </a>
+
+            <a href="#projects"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition-colors group">
+                <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+                <span class="text-[10px] font-mono">Projets</span>
+            </a>
+
+            <a href="#veille"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition-colors group">
+                <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                    </path>
+                </svg>
+                <span class="text-[10px] font-mono">Veille</span>
+            </a>
+
+            <a href="#contact"
+                class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-400 transition-colors group">
+                <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                </svg>
+                <span class="text-[10px] font-mono">Contact</span>
+            </a>
+        </nav>
+    </div>
+
     <script src="./js/backtotop.js"></script>
 </body>
 

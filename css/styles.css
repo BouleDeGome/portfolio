@@ -4,42 +4,9 @@
 }
 
 ::-webkit-scrollbar {
-    display: none;
-}
-
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-.font-mono {
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* Grid Background */
-.grid-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0.1;
-    background-image: 
-        linear-gradient(cyan 1px, transparent 1px),
-        linear-gradient(90deg, cyan 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-}
-
-/* Smooth scrolling offset for fixed header */
-section {
-    scroll-margin-top: 80px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
     width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: #020617;
+    /* slate-950 */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -51,14 +18,43 @@ section {
     background: #06b6d4;
 }
 
+body {
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+    background-color: #020617;
+    /* slate-950 */
+    color: #cbd5e1;
+    /* slate-300 */
+}
+
+/* Grid Background - Cyberpunk style */
+.grid-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    background-image:
+        linear-gradient(rgba(34, 211, 238, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Smooth scrolling offset */
+section {
+    scroll-margin-top: 80px;
+}
+
 /* Focus states */
 input:focus,
 textarea:focus,
 button:focus {
     outline: none;
+    border-color: #22d3ee;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
 }
 
-/* Animation pour les liens */
+/* Links Animation */
 a {
     transition: all 0.3s ease;
 }
@@ -69,4 +65,334 @@ a.veille {
 
 a#articleredirect {
     padding: 1%;
+}
+
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Terminal Cursor */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.animate-pulse {
+    animation: blink 1s step-end infinite;
+}
+
+/* Glitch Effect on Hover (Simple) */
+.hover-glitch:hover {
+    text-shadow: 2px 0 #0ff, -2px 0 #f00;
+}
+
+/* --- Phase 2: Advanced Animations & Styles --- */
+
+/* Custom Cursor */
+@media (hover: hover) and (pointer: fine) {
+
+    .cursor-dot,
+    .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    /* Hide default cursor only on devices that support it */
+    html,
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    .magnetic-btn {
+        cursor: none;
+    }
+
+    .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background-color: #22d3ee;
+        /* cyan-400 */
+    }
+
+    .cursor-outline {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #22d3ee;
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+
+    /* Cursor hover state */
+    body.hovering .cursor-outline {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(34, 211, 238, 0.1);
+        border-color: #06b6d4;
+    }
+}
+
+/* Glass/Neon Button Style */
+.glass-btn {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.glass-btn:hover {
+    border-color: #22d3ee;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+    transform: scale(1.02);
+    color: #fff;
+}
+
+.glass-btn:hover::before {
+    left: 100%;
+}
+
+/* Magnetic Button Utility */
+.magnetic-btn {
+    display: inline-block;
+    transition: transform 0.1s linear;
+    /* Quick response for magnetic effect */
+}
+
+/* --- Phase 3: Micro-interactions --- */
+
+/* Staggered Items */
+.reveal .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active .stagger-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animated Section Headers */
+h2 span.text-cyan-400 {
+    display: inline-block;
+    position: relative;
+}
+
+h2 span.text-cyan-400::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #22d3ee;
+    transition: width 0.8s ease-out 0.2s;
+    /* Delay to wait for section reveal */
+}
+
+.reveal.active h2 span.text-cyan-400::after {
+    width: 100%;
+}
+
+/* Navigation Link Underline */
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #22d3ee;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* 3D Tilt Card Base */
+.tilt-card {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* --- Phase 5: Design Consistency --- */
+.glow-btn {
+    position: relative;
+    background: #0891b2;
+    /* cyan-600 */
+    color: white;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(8, 145, 178, 0.4);
+    z-index: 1;
+}
+
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.glow-btn:hover {
+    background: #06b6d4;
+    /* cyan-500 */
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+    transform: scale(1.02);
+}
+
+.glow-btn:hover::before {
+    left: 100%;
+}
+
+
+/* --- Phase 4: Final Details --- */
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: #06b6d4;
+    /* cyan-500 */
+    box-shadow: 0 0 10px #22d3ee;
+    z-index: 10000;
+    transition: width 0.1s ease-out;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    color: #22d3ee;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+    opacity: 0;
+    /* Hidden state */
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #22d3ee;
+    color: #0f172a;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Section Dividers (SVG) */
+.custom-shape-divider-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    fill: #020617;
+    /* match section background */
+}
+
+/* Tooltips */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+[data-tooltip]:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    bottom: 135%;
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth snap-y snap-mandatory md:snap-none">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Détails du projet - Portfolio de Milan LELIEVRE - Administrateur Systèmes et Réseaux.">
+    <title>Projet en cours... - Milan LELIEVRE</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-slate-950 text-slate-300 font-mono selection:bg-cyan-500/30 selection:text-cyan-200">
+    <!-- Header -->
+    <header class="hidden md:block fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/30 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html#projects" class="text-cyan-400 font-mono hover:text-cyan-300 transition-colors flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span>Retour aux projets</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Header -->
+    <div class="md:hidden p-4 bg-slate-950/80 backdrop-blur-md border-b border-cyan-900/30 fixed w-full top-0 z-50">
+        <a href="index.html#projects" class="text-cyan-400 font-mono flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Retour
+        </a>
+    </div>
+
+    <!-- Projet Détail Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto min-h-screen">
+        <div class="bg-slate-900 rounded-xl border border-cyan-900/30 p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-600/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <div class="relative z-10">
+                <!-- Header -->
+                <div class="mb-8 border-b border-slate-800 pb-8">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span id="project-category" class="px-4 py-1.5 bg-cyan-600/20 text-cyan-400 rounded-full border border-cyan-500/30 text-sm font-mono tracking-wide">
+                            Catégorie
+                        </span>
+                    </div>
+                    <h1 id="project-title" class="text-4xl md:text-5xl font-bold text-white mb-6">Chargement...</h1>
+                    <p id="project-description" class="text-lg text-slate-400 leading-relaxed max-w-3xl">
+                        Veuillez patienter pendant le chargement des détails du projet.
+                    </p>
+                </div>
+
+                <!-- Technologies (Tags) -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <span class="text-cyan-400">#</span> Technologies et Outils
+                    </h3>
+                    <div id="project-tags" class="flex flex-wrap gap-3">
+                        <!-- Tags injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Documentation Links -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <span class="text-cyan-400">></span> Ressources
+                    </h3>
+                    <div id="project-docs" class="grid md:grid-cols-2 gap-4">
+                        <!-- Docs injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Network Schemas Section -->
+                <div id="schemas-section" class="mb-12" style="display: none;">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <span class="text-cyan-400">[]</span> Schémas Réseau & Architecture
+                    </h3>
+                    <div id="project-schemas" class="grid gap-8">
+                        <!-- Schemas injected by JS -->
+                    </div>
+                </div>
+                
+                <!-- Demo Link Container -->
+                <div class="mt-8 flex justify-center border-t border-slate-800 pt-8">
+                    <a id="project-demo-btn" href="#" target="_blank" class="bg-cyan-600 text-white px-8 py-4 rounded-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-cyan-500/40 font-mono font-bold flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                        Voir la démo en direct
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 border-t border-cyan-900/30 text-center">
+        <p class="text-slate-500 font-mono text-sm">
+            © 2024 Milan LELIEVRE / Tous droits réservés.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/projects-data.js"></script>
+    <script src="./js/project-render.js"></script>
+</body>
+</html>

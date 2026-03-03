@@ -495,7 +495,7 @@
                                 class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono">TFTP</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=r3st0"
+                            <a href="javascript:void(0)" onclick="openProjectModal('r3st0')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -536,7 +536,7 @@
                                 Directory</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=bidart"
+                            <a href="javascript:void(0)" onclick="openProjectModal('bidart')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -614,7 +614,7 @@
                                 class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono">JavaScript</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=portfolio"
+                            <a href="javascript:void(0)" onclick="openProjectModal('portfolio')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -664,7 +664,7 @@
                                 / Configuration WEB</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=boxtobed"
+                            <a href="javascript:void(0)" onclick="openProjectModal('boxtobed')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -714,7 +714,7 @@
                                 class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono">StormShield</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=techunivers"
+                            <a href="javascript:void(0)" onclick="openProjectModal('techunivers')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -759,7 +759,7 @@
                                 / Nebula</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=nexforma"
+                            <a href="javascript:void(0)" onclick="openProjectModal('nexforma')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -805,7 +805,7 @@
                                 class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono">PowerShell</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=ch"
+                            <a href="javascript:void(0)" onclick="openProjectModal('ch')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <span>Rapport de stage</span>
                             </a>
@@ -835,7 +835,7 @@
                                 class="px-2 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono">Centreon</span>
                         </div>
                         <div class="flex gap-4 font-mono text-sm">
-                            <a href="projet.html?id=calypsis"
+                            <a href="javascript:void(0)" onclick="openProjectModal('calypsis')"
                                 class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -1405,6 +1405,62 @@
 
 
 
+    <!-- Project Modal -->
+    <div id="project-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div
+            class="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-cyan-900/50 rounded-xl shadow-2xl overflow-y-auto m-4 flex flex-col custom-scrollbar">
+            <!-- Close button -->
+            <button onclick="closeProjectModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-cyan-400 transition-colors bg-slate-800/80 p-2 rounded-full z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Modal Content -->
+            <div class="p-6 md:p-8 pt-12 md:pt-8 w-full">
+                <div class="mb-6">
+                    <span id="modal-category"
+                        class="px-3 py-1 bg-cyan-600/20 text-cyan-400 rounded border border-cyan-500/30 text-sm font-mono inline-block mb-3">SISR</span>
+                    <h2 id="modal-title" class="text-3xl md:text-4xl font-bold text-white mb-4 pr-10">Projet</h2>
+                    <p id="modal-description" class="text-slate-400 text-lg"></p>
+                </div>
+
+                <div id="modal-tags" class="flex flex-wrap gap-2 mb-8">
+                    <!-- Tags -->
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Files Section -->
+                    <div
+                        class="bg-slate-800 rounded-lg border border-cyan-900/30 p-6 flex flex-col h-full max-h-[400px]">
+                        <h3 class="text-xl font-bold text-white mb-4 border-b border-cyan-900/50 pb-2">
+                            <span class="text-cyan-400 font-mono">// </span>Fichiers
+                        </h3>
+                        <ul id="modal-files"
+                            class="space-y-3 text-slate-300 font-mono text-sm overflow-y-auto pr-2 custom-scrollbar">
+                            <!-- Files -->
+                        </ul>
+                    </div>
+
+                    <!-- Schema Section -->
+                    <div
+                        class="bg-slate-800 rounded-lg border border-cyan-900/30 p-6 flex flex-col h-full max-h-[400px]">
+                        <h3 class="text-xl font-bold text-white mb-4 border-b border-cyan-900/50 pb-2">
+                            <span class="text-cyan-400 font-mono">// </span>Schéma Réseau
+                        </h3>
+                        <div id="modal-schemas"
+                            class="flex flex-col gap-4 overflow-y-auto custom-scrollbar pr-2 items-center justify-center h-full min-h-[150px]">
+                            <!-- Schemas -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-black text-white py-12 px-4 sm:px-6 lg:px-8 border-t border-cyan-900/50">
         <div class="max-w-7xl mx-auto">
@@ -1463,6 +1519,8 @@
         </div>
     </footer>
 
+    <script src="./js/projects-data.js"></script>
+    <script src="./js/project-modal.js"></script>
     <script src="./js/contact.js"></script>
     <script src="./js/activenavbar.js"></script>
     <script src="./js/menumobile.js"></script>

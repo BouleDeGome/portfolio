@@ -1,0 +1,250 @@
+function openProjectModal(projectId) {
+    if (!window.projectsData || !window.projectsData[projectId]) return;
+
+    const project = window.projectsData[projectId];
+    const modal = document.getElementById('project-modal');
+    console.log("Opening modal for:", projectId, project);
+    document.getElementById('modal-description').textContent = project.description;
+
+    // Tags
+    const tagsContainer = document.getElementById('modal-tags');
+    tagsContainer.innerHTML = '';
+    if (project.tags) {
+        project.tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm font-mono';
+            span.textContent = tag;
+            tagsContainer.appendChild(span);
+        });
+    }
+
+    // Files
+    const filesContainer = document.getElementById('modal-files');
+    filesContainer.innerHTML = '';
+    if (project.files && project.files.length > 0) {
+        project.files.forEach(file => {
+            const li = document.createElement('li');
+            li.className = 'flex items-center gap-2';
+            li.innerHTML = `<span class="text-cyan-400">▹</span> <a href="${file.url}" target="_blank" class="hover:text-cyan-400 hover:underline transition-colors">${file.name}</a>`;
+            filesContainer.appendChild(li);
+        });
+    } else {
+        filesContainer.innerHTML = '<li class="text-slate-500 italic">Aucun fichier spécifié...</li>';
+    }
+
+    // Schemas
+    const schemasContainer = document.getElementById('modal-schemas');
+    schemasContainer.innerHTML = '';
+    if (project.schemas && project.schemas.length > 0) {
+        project.schemas.forEach(schemaPath => {
+            const img = document.createElement('img');
+            img.src = schemaPath;
+            img.alt = `Schéma réseau de ${project.title}`;
+            img.className = 'w-full rounded-lg border border-cyan-900/50 object-cover cursor-pointer hover:opacity-80 transition-opacity';
+            img.onclick = () => openFullscreenSchema(schemaPath);
+            schemasContainer.appendChild(img);
+        });
+    } else {
+        schemasContainer.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-8 text-slate-500 border-2 border-dashed border-slate-700/50 rounded-lg bg-slate-800/30">
+                <svg class="w-12 h-12 mb-2 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <span class="text-sm">Schéma à venir...</span>
+            </div>
+        `;
+    }
+
+    // Show modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+    }, 10);
+
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+    modal.classList.remove('opacity-100');
+    modal.classList.add('opacity-0');
+
+    // Wait for transition to finish
+    setTimeout(() => {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        // Restore body scroll
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+// Close on outside click or ESC key
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('project-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            // Close if clicking directly on the backdrop (not inside modal content)
+            if (e.target === modal) {
+                closeProjectModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeProjectModal();
+            }
+        });
+    }
+});
+
+// --- Fullscreen Schema Zoom Logic ---
+let fScale = 1;
+let fPanning = false;
+let fPointX = 0;
+let fPointY = 0;
+let fStart = { x: 0, y: 0 };
+
+function getOrCreateFullscreenModal() {
+    let fmodal = document.getElementById('fullscreen-schema-modal');
+    if (!fmodal) {
+        fmodal = document.createElement('div');
+        fmodal.id = 'fullscreen-schema-modal';
+        fmodal.className = 'fixed inset-0 z-[200] hidden items-center justify-center bg-slate-950/95 backdrop-blur-xl opacity-0 transition-opacity duration-300';
+        fmodal.innerHTML = \`
+            <button onclick="closeFullscreenSchema()" class="absolute top-6 right-6 text-slate-400 hover:text-cyan-400 transition-colors bg-slate-800/80 p-3 rounded-full z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div class="w-full h-full overflow-hidden flex items-center justify-center cursor-grab" id="fullscreen-schema-container">
+                <img id="fullscreen-schema-img" src="" alt="Schéma Fullscreen" class="transition-transform duration-100 ease-out origin-center select-none" style="max-height: 90vh;" draggable="false" />
+            </div>
+            <!-- Zoom controls -->
+            <div class="absolute bottom-6 right-6 flex gap-2 z-10">
+                <button onclick="zoomFullscreen(-1)" class="bg-slate-800/80 text-cyan-400 p-3 rounded-lg border border-cyan-900/50 hover:bg-cyan-900/50" title="Dézoomer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+                </button>
+                <button onclick="zoomFullscreen(1)" class="bg-slate-800/80 text-cyan-400 p-3 rounded-lg border border-cyan-900/50 hover:bg-cyan-900/50" title="Zoomer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <button onclick="resetFullscreenPane()" class="bg-slate-800/80 text-cyan-400 p-3 rounded-lg border border-cyan-900/50 hover:bg-cyan-900/50 ml-2" title="Réinitialiser">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                </button>
+            </div>
+        \`;
+        document.body.appendChild(fmodal);
+        setupFullscreenPanZoom();
+    }
+    return fmodal;
+}
+
+function openFullscreenSchema(src) {
+    const fmodal = getOrCreateFullscreenModal();
+    const img = document.getElementById('fullscreen-schema-img');
+    img.src = src;
+    
+    resetFullscreenPane();
+    
+    fmodal.classList.remove('hidden');
+    fmodal.classList.add('flex');
+    setTimeout(() => {
+        fmodal.classList.remove('opacity-0');
+        fmodal.classList.add('opacity-100');
+    }, 10);
+}
+
+function closeFullscreenSchema() {
+    const fmodal = document.getElementById('fullscreen-schema-modal');
+    if (!fmodal) return;
+    fmodal.classList.remove('opacity-100');
+    fmodal.classList.add('opacity-0');
+    setTimeout(() => {
+        fmodal.classList.remove('flex');
+        fmodal.classList.add('hidden');
+        document.getElementById('fullscreen-schema-img').src = '';
+    }, 300);
+}
+
+function zoomFullscreen(direction) {
+    if (direction > 0) fScale *= 1.2;
+    else fScale /= 1.2;
+    applyFullscreenTransform();
+}
+
+function resetFullscreenPane() {
+    fScale = 1;
+    fPointX = 0;
+    fPointY = 0;
+    applyFullscreenTransform();
+}
+
+function applyFullscreenTransform() {
+    if (fScale < 0.5) fScale = 0.5;
+    if (fScale > 10) fScale = 10;
+    
+    // Correct translation to keep image centered if scale is 1
+    if (fScale === 1) {
+        fPointX = 0;
+        fPointY = 0;
+    }
+    
+    const img = document.getElementById('fullscreen-schema-img');
+    if (img) {
+        img.style.transform = \`translate(\${fPointX}px, \${fPointY}px) scale(\${fScale})\`;
+    }
+}
+
+function setupFullscreenPanZoom() {
+    const container = document.getElementById('fullscreen-schema-container');
+    const img = document.getElementById('fullscreen-schema-img');
+    
+    container.onmousedown = function (e) {
+        if (e.target !== img && e.target !== container) return;
+        e.preventDefault();
+        fStart = { x: e.clientX - fPointX, y: e.clientY - fPointY };
+        fPanning = true;
+        container.classList.remove('cursor-grab');
+        container.classList.add('cursor-grabbing');
+    };
+    
+    container.onmouseup = function () {
+        fPanning = false;
+        container.classList.remove('cursor-grabbing');
+        container.classList.add('cursor-grab');
+    };
+    
+    container.onmouseleave = function () {
+        fPanning = false;
+        container.classList.remove('cursor-grabbing');
+        container.classList.add('cursor-grab');
+    };
+    
+    container.onmousemove = function (e) {
+        if (!fPanning) return;
+        e.preventDefault();
+        fPointX = (e.clientX - fStart.x);
+        fPointY = (e.clientY - fStart.y);
+        applyFullscreenTransform();
+    };
+    
+    container.onwheel = function (e) {
+        e.preventDefault();
+        let xs = (e.clientX - fPointX) / fScale;
+        let ys = (e.clientY - fPointY) / fScale;
+        
+        let delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
+        (delta > 0) ? (fScale *= 1.1) : (fScale /= 1.1);
+        
+        if (fScale < 0.5) fScale = 0.5;
+        if (fScale > 10) fScale = 10;
+        
+        fPointX = e.clientX - xs * fScale;
+        fPointY = e.clientY - ys * fScale;
+        
+        applyFullscreenTransform();
+    };
+}

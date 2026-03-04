@@ -10,25 +10,23 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure R3st0.fr.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - R3st0.fr.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/R3st0.fr/Schéma - R3st0.fr.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/R3st0.fr/Schéma cisco - R3st0.fr.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - R3st0.fr.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/R3st0.fr/Schéma - R3st0.fr.webp" }
         ]
     },
-    "bidart": {
-        title: "Infrastructure Mairie de Bidart",
+    "gourmet": {
+        title: "Infrastructure Gourmet&Co",
         category: "SISR",
-        description: "Migration d'un windows server 2012 avec Active Directory/DNS et partage de fichier vers un windows server 2019.",
-        tags: ["Windows Server", "Active Directory"],
+        description: "Déploiement d'une infrastructure réseau complète avec Active Directory, serveur DHCP, Drive auto-hébergé avec pare-feu StormShield et superviseur Centreon.",
+        tags: ["Windows Server", "Active Directory", "DHCP", "VLAN", "StormShield", "Centreon", "ownCloud"],
         docLink: "#",
         docType: "Documentation",
         schemas: ["./img/Schéma/Mairie de Bidart/Schéma - Mairie de Bidart.webp"],
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Mairie de Bidart.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujets/Sujet - Mairie de Bidart.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Mairie de Bidart/Schéma - Mairie de Bidart.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/Mairie de Bidart/Schéma cisco - Mairie de Bidart.png" }
+            { name: "📄 Sujet", url: "./fch/sujets/Sujet - Mairie de Bidart.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Mairie de Bidart/Schéma - Mairie de Bidart.webp" }
         ]
     },
     "portfolio": {
@@ -42,9 +40,8 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Site web portfolio.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Portfolio.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Portfolio/Schéma - Portfolio.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/Portfolio/Schéma cisco - Portfolio.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Portfolio.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Portfolio/Schéma - Portfolio.webp" }
         ]
     },
     "boxtobed": {
@@ -74,9 +71,8 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - TechUnivers.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/TechUnivers/Schéma cisco - TechUnivers.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - TechUnivers.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
         ]
     },
     "nexforma": {
@@ -90,9 +86,8 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Nexforma.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Nexforma.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/Nexforma/Schéma cisco - Nexforma.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Nexforma.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" }
         ]
     },
     "ch": {
@@ -106,9 +101,8 @@ const projectsData = {
         demoLink: null,
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Stage Centre Hospitalier.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Centre Hospitalier.pdf" },
-            { name: "�️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/Centre Hospitalier/Schéma cisco - Centre Hospitalier.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Centre Hospitalier.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
         ]
     },
     "calypsis": {
@@ -122,9 +116,8 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Calypsis.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Calypsis.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" },
-            { name: "🖼️ Schéma Cisco", url: "./img/Schéma/Calypsis/Schéma cisco - Calypsis.png" }
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Calypsis.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" }
         ]
     }
 };

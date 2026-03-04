@@ -50,6 +50,26 @@ function openProjectModal(projectId) {
                 </a>
             </div>
         `;
+    } else if (projectId === 'ch') {
+        const gridContainer = filesContainer.closest('.grid');
+        if (gridContainer) {
+            gridContainer.classList.remove('md:grid-cols-2');
+            gridContainer.lastElementChild.classList.add('hidden');
+        }
+
+        filesTitle.innerHTML = '<span class="text-cyan-400 font-mono">// </span>Rapport de Stage';
+        filesContainer.innerHTML = `
+            <div class="flex flex-col items-center justify-center min-h-[150px] gap-6 text-center mt-2 w-full">
+                <p class="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
+                    Découvrez en détail l'ensemble des missions, de l'infrastructure et des compétences développées lors de ce stage professionnel en centre hospitalier.
+                </p>
+                <!-- Find the documentation URL within the projectsData -->
+                <a href="${project.files.find(f => f.name.includes('Documentation')).url}" target="_blank" class="glow-btn magnetic-btn flex items-center justify-center gap-3 w-full max-w-md py-4 rounded-xl font-mono text-white tracking-wide shadow-lg shadow-cyan-900/20 hover:scale-[1.02] transition-transform text-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Consulter le Rapport (.pdf)
+                </a>
+            </div>
+        `;
     } else {
         const gridContainer = filesContainer.closest('.grid');
         if (gridContainer) {

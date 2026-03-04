@@ -64,7 +64,7 @@ const projectsData = {
         title: "Infrastructure TechUnivers",
         category: "SISR",
         description: "Mise en place d'une infrastructure réseau complète avec Active Directory, Pare-feu StormShield, server Apache2 et HAProxy avec haute disponibilité pour les deux services.",
-        tags: ["Windows Server", "Active Directory", "Linux", "Apache2", "HAProxy", "StormShield"],
+        tags: ["Windows Server", "Active Directory", "Linux", "Apache2", "HAProxy", "StormShield", "CLI"],
         docLink: "https://github.com/BouleDeGome/TechUniverse",
         docType: "Documentation",
         schemas: ["./img/Schéma/TechUnivers/Schéma - TechUnivers.webp"],
@@ -94,7 +94,7 @@ const projectsData = {
         title: "Stage Centre Hospitalier",
         category: "SISR",
         description: "Stage professionnel réalisé en centre hospitalier.",
-        tags: ["GLPI", "Windows Server", "vCenter", "Microsoft Exchange", "PowerShell"],
+        tags: ["GLPI", "Windows Server", "vCenter", "Microsoft Exchange", "PowerShell", "CLI"],
         docLink: "https://github.com/BouleDeGome/",
         docType: "Rapport de stage",
         schemas: ["./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp"],
@@ -105,11 +105,11 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
         ]
     },
-    "calypsis": {
-        title: "Infrastructure Calypsis",
+    "NexaHost": {
+        title: "Infrastructure Nexahost",
         category: "SISR",
-        description: "Projet personnel. (HomeLab)",
-        tags: ["Proxmox", "Plex", "WindowsServer", "Centreon"],
+        description: "Déploiement d'une infrastructure complète avec matérielle professionnelle. Voir ci-dessous",
+        tags: ["Proxmox", "OPNSense", "VLAN", "ReverseProxy", "Linux Bash", "Pterodactyl", "Plesk", "Docker", "VLAN", "Centreon", "HP Proliant", "HP iLO", "ECT..."],
         docLink: "https://github.com/BouleDeGome/Calypsis",
         docType: "Documentation",
         schemas: ["./img/Schéma/Calypsis/Schéma - Calypsis.webp"],

@@ -51,7 +51,7 @@ const projectsData = {
         tags: ["Windows Server", "Active Directory", "DHCP/DNS", "Linux", "TFTP", "CLI / Configuration WEB"],
         docLink: "https://github.com/BouleDeGome/BoxToBed/",
         docType: "Documentation",
-        schemas: ["./img/schéma/BoxToBed/Schéma - BoxToBed.webp"],
+        schemas: ["./img/Schéma/BoxToBed/Schéma - BoxToBed.webp"],
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure BoxToBed.pdf" },

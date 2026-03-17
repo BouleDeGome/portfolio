@@ -119,6 +119,19 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/NexaHost/Schéma - Nexahost.webp" }
         ]
     },
+    "Calypsis": {
+        title: "Bientôt Disponible !",
+        category: "SISR",
+        description: "Soon...",
+        tags: ["Bientôt",],
+        docLink: "https://github.com/BouleDeGome/Calypsis",
+        docType: "Documentation",
+        schemas: ["./img/Schéma/Calypsis/Schéma - Calypsis.webp"],
+        demoLink: "#",
+        files: [
+            { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" }
+        ]
+    },
     
 };
 
@@ -136,6 +149,6 @@ window.projectsCategories = [
     },
     {
         title: "Projets Personnels",
-        projects: ["portfolio", "NexaHost"]
+        projects: ["portfolio", "NexaHost", "Calypsis"]
     }
 ];

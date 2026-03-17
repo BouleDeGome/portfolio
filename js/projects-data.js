@@ -10,7 +10,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure R3st0.fr.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - R3st0.fr.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - R3st0.fr.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/R3st0.fr/Schéma - R3st0.fr.webp" }
         ]
     },
@@ -55,7 +55,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure BoxToBed.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujets/Sujet - BoxToBed.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - BoxToBed.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/BoxToBed/Schéma - BoxToBed.webp" },
             { name: "🖼️ Schéma Cisco", url: "./img/Schéma/BoxToBed/Schéma cisco - BoxToBed.png" }
         ]
@@ -71,7 +71,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - TechUnivers.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
         ]
     },
@@ -86,7 +86,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Nexforma.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Nexforma.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Nexforma.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" }
         ]
     },
@@ -101,7 +101,7 @@ const projectsData = {
         demoLink: null,
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Stage Centre Hospitalier.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Centre Hospitalier.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Centre Hospitalier.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
         ]
     },

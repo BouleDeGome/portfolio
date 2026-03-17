@@ -116,7 +116,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Calypsis.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Calypsis.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Calypsis.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" }
         ]
     }

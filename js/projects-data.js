@@ -71,7 +71,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUniver   .docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
         ]
     },
@@ -86,7 +86,6 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Nexforma.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Nexforma.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" }
         ]
     },
@@ -112,14 +111,31 @@ const projectsData = {
         tags: ["Proxmox", "OPNSense", "VLAN", "ReverseProxy", "Linux Bash", "Pterodactyl", "Plesk", "Docker", "VLAN", "Centreon", "HP Proliant", "HP iLO", "ECT..."],
         docLink: "https://github.com/BouleDeGome/Calypsis",
         docType: "Documentation",
-        schemas: ["./img/Schéma/Calypsis/Schéma - Calypsis.webp"],
+        schemas: ["./img/Schéma/NexaHost/Schéma - Nexahost.webp"],
         demoLink: "#",
         files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Calypsis.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Calypsis.docx" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" }
+            { name: "🔎 Site Web", url: "https://nexahost.fr" },
+            { name: "🛡️ Discord", url: "https://discord.gg/Hk5cT4Nybw" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/NexaHost/Schéma - Nexahost.webp" }
         ]
-    }
+    },
+    
 };
 
 window.projectsData = projectsData;
+
+// Organisation des projets par catégories dans le portfolio
+window.projectsCategories = [
+    {
+        title: "Projets Professionnels",
+        projects: ["nexforma", "ch"]
+    },
+    {
+        title: "Projets Scolaires",
+        projects: ["r3st0", "gourmet", "boxtobed", "techunivers"]
+    },
+    {
+        title: "Projets Personnels",
+        projects: ["portfolio", "NexaHost"]
+    }
+];

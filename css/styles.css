@@ -390,3 +390,56 @@ nav a:hover::after {
     transform: translateX(-50%) scale(1);
     bottom: 135%;
 }
+
+/* ---  Responsive Mobile Fixes --- */
+
+/* Masquer les tooltips sur mobile (touch) */
+@media (hover: none) {
+    [data-tooltip]::before {
+        display: none;
+    }
+}
+
+/* Remonter le bouton back-to-top au dessus de la bottom nav mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 80px; /* au dessus de la bottom nav (h ≈ 64px) */
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Réduire le scroll-margin pour ne pas avoir trop d'espace */
+    section {
+        scroll-margin-top: 0px;
+    }
+
+    /* Empêcher les tags de projets de déborder */
+    .flex.flex-wrap.gap-2 > span {
+        word-break: break-word;
+    }
+
+    /* Améliorer la lisibilité du texte décription dans la modale */
+    #modal-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Réduire le scroll bar width sur mobile */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* Modal description text size */
+    .modal-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 640px) and (max-width: 1024px) {
+    .back-to-top {
+        bottom: 24px;
+        right: 24px;
+    }
+}

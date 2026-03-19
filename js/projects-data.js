@@ -18,15 +18,15 @@ const projectsData = {
         title: "Infrastructure Gourmet&Co",
         category: "SISR",
         description: "Déploiement d'une infrastructure réseau complète avec Active Directory, serveur DHCP, Drive auto-hébergé avec pare-feu StormShield et superviseur Centreon.",
-        tags: ["Windows Server", "Active Directory", "DHCP", "VLAN", "StormShield", "Centreon", "ownCloud"],
+        tags: ["Windows Server", "Active Directory", "DHCP", "VLAN", "StormShield", "Centreon", "ownCloud", "CLI"],
         docLink: "#",
         docType: "Documentation",
-        schemas: ["./img/Schéma/Mairie de Bidart/Schéma - Mairie de Bidart.webp"],
+        schemas: ["./img/Schéma/GourmetCo/Schéma - GourmetCo.webp"],
         demoLink: "#",
         files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Mairie de Bidart.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujets/Sujet - Mairie de Bidart.docx" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Mairie de Bidart/Schéma - Mairie de Bidart.webp" }
+            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure GourmetCo.pdf" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - GourmetCo.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/GourmetCo/Schéma - GourmetCo.webp" }
         ]
     },
     "portfolio": {

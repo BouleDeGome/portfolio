@@ -104,8 +104,8 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
         ]
     },
-    "NexaHost": {
-        title: "Infrastructure Nexahost",
+    "ZelionHost": {
+        title: "Infrastructure ZelionHost",
         category: "SISR",
         description: "Déploiement d'une infrastructure complète avec matérielle professionnelle. Voir ci-dessous",
         tags: ["Proxmox", "OPNSense", "VLAN", "ReverseProxy", "Linux Bash", "Pterodactyl", "Plesk", "Docker", "VLAN", "Centreon", "HP Proliant", "HP iLO", "ECT..."],
@@ -114,7 +114,7 @@ const projectsData = {
         schemas: ["./img/Schéma/NexaHost/Schéma - Nexahost.webp"],
         demoLink: "#",
         files: [
-            { name: "🔎 Site Web", url: "https://nexahost.fr" },
+            { name: "🔎 Site Web", url: "https://zelionhost.fr" },
             { name: "🛡️ Discord", url: "https://discord.gg/Hk5cT4Nybw" },
             { name: "🖼️ Schéma", url: "./img/Schéma/NexaHost/Schéma - Nexahost.webp" }
         ]
@@ -149,6 +149,6 @@ window.projectsCategories = [
     },
     {
         title: "Projets Personnels",
-        projects: ["portfolio", "NexaHost", "Calypsis"]
+        projects: ["portfolio", "ZelionHost", "Calypsis"]
     }
 ];

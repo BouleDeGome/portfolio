@@ -286,4 +286,4 @@ if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
 
-console.log('NexaHost - Site chargé avec succès ✨');
+console.log('ZelionHost - Site chargé avec succès ✨');

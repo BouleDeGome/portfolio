@@ -196,7 +196,7 @@ window.projectsCategories = [
     },
     {
         title: "Projets Scolaires",
-        projects: ["r3st0", "Htldville", "boxtobed", "techunivers", "gourmet"]
+        projects: ["r3st0", "Htldville", "boxtobed", "techunivers", "gourmet", "802.1x"]
     },
     {
         title: "Projets Personnels",

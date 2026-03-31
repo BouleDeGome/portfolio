@@ -1,4 +1,44 @@
 const projectsData = {
+
+    // PROJET PRO \\
+
+
+    "nexforma": {
+        title: "Infrastructure Nexforma",
+        category: "SISR",
+        description: "Projet professionnel anonymisé réalisé en entreprise.",
+        tags: ["PfSense", "Vlan", "Proxmox", "OpenVPN", "Zyxel / Nebula"],
+        docLink: "https://github.com/BouleDeGome/Nexforma",
+        docType: "Documentation",
+        schemas: ["./img/Schéma/Nexforma/Schéma - Nexforma.webp"],
+        demoLink: "#",
+        files: [
+            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Nexforma.pdf" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" }
+        ]
+    },
+    "ch": {
+        title: "Stage Centre Hospitalier",
+        category: "SISR",
+        description: "Stage professionnel réalisé en centre hospitalier.",
+        tags: ["GLPI", "Windows Server", "vCenter", "Microsoft Exchange", "PowerShell", "CLI"],
+        docLink: "https://github.com/BouleDeGome/",
+        docType: "Rapport de stage",
+        schemas: ["./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp"],
+        demoLink: null,
+        files: [
+            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Stage Centre Hospitalier.pdf" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Centre Hospitalier.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
+        ]
+    },
+
+
+    // ---------------------------
+
+    // PROJET SCO \\
+
+
     "r3st0": {
         title: "Infrastructure R3st0.fr",
         category: "SISR",
@@ -32,21 +72,6 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/GourmetCo/Schéma - GourmetCo.webp" }
         ]
     },
-    "portfolio": {
-        title: "Site web portfolio",
-        category: "SLAM",
-        description: "Création d'un site portfolio responsive pour présenter mes compétences et projets réalisés durant ma formation.",
-        tags: ["HTML", "CSS", "JavaScript"],
-        docLink: "https://github.com/BouleDeGome/portfolio",
-        docType: "Code",
-        schemas: ["./img/Schéma/Portfolio/Schéma - Portfolio.webp"],
-        demoLink: "#",
-        files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Site web portfolio.pdf" },
-            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Portfolio.docx" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Portfolio/Schéma - Portfolio.webp" }
-        ]
-    },
     "boxtobed": {
         title: "Infrastructure BoxToBed",
         category: "SISR",
@@ -78,6 +103,21 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
         ]
     },
+    "802.1x": {
+        title: "Infrastructure LouisDeFoix",
+        category: "SISR",
+        description: "Mise en place d'une infrastructure avec authentification sur le réseau sécurisé (via protocole 802.1x).",
+        tags: ["Windows Server", "Active Directory", "Windows NPS", "StormShield", "CLI"],
+        docLink: "",
+        docType: "Documentation",
+        schemas: ["./img/Schéma/LPO/Schéma - LPOLouisDeFoix.webp"],
+        demoLink: "#",
+        files: [
+            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
+        ]
+    },
     "Htldville": {
         title: "Infrastructure Hôtel de ville",
         category: "SISR",
@@ -94,35 +134,12 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/Hoteldeville/Schéma - Hôtel de ville.webp" }
         ]
     },
-    "nexforma": {
-        title: "Infrastructure Nexforma",
-        category: "SISR",
-        description: "Projet professionnel anonymisé réalisé en entreprise.",
-        tags: ["PfSense", "Vlan", "Proxmox", "OpenVPN", "Zyxel / Nebula"],
-        docLink: "https://github.com/BouleDeGome/Nexforma",
-        docType: "Documentation",
-        schemas: ["./img/Schéma/Nexforma/Schéma - Nexforma.webp"],
-        demoLink: "#",
-        files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure Nexforma.pdf" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Nexforma/Schéma - Nexforma.webp" }
-        ]
-    },
-    "ch": {
-        title: "Stage Centre Hospitalier",
-        category: "SISR",
-        description: "Stage professionnel réalisé en centre hospitalier.",
-        tags: ["GLPI", "Windows Server", "vCenter", "Microsoft Exchange", "PowerShell", "CLI"],
-        docLink: "https://github.com/BouleDeGome/",
-        docType: "Rapport de stage",
-        schemas: ["./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp"],
-        demoLink: null,
-        files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Stage Centre Hospitalier.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Centre Hospitalier.docx" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/Centre Hospitalier/Schéma - Centre Hospitalier.webp" }
-        ]
-    },
+
+    // ---------------------------
+
+
+    // PROJET PER \\
+
     "ZelionHost": {
         title: "Infrastructure ZelionHost",
         category: "SISR",
@@ -151,6 +168,21 @@ const projectsData = {
             { name: "🖼️ Schéma", url: "./img/Schéma/Calypsis/Schéma - Calypsis.webp" }
         ]
     },
+    "portfolio": {
+        title: "Site web portfolio",
+        category: "SLAM",
+        description: "Création d'un site portfolio responsive pour présenter mes compétences et projets réalisés durant ma formation.",
+        tags: ["HTML", "CSS", "JavaScript"],
+        docLink: "https://github.com/BouleDeGome/portfolio",
+        docType: "Code",
+        schemas: ["./img/Schéma/Portfolio/Schéma - Portfolio.webp"],
+        demoLink: "#",
+        files: [
+            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Site web portfolio.pdf" },
+            { name: "📄 Sujet", url: "./fch/sujet/Sujet - Portfolio.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/Portfolio/Schéma - Portfolio.webp" }
+        ]
+    },
     
 };
 
@@ -164,7 +196,7 @@ window.projectsCategories = [
     },
     {
         title: "Projets Scolaires",
-        projects: ["r3st0", "Htldville", "gourmet", "boxtobed", "techunivers"]
+        projects: ["r3st0", "Htldville", "boxtobed", "techunivers", "gourmet"]
     },
     {
         title: "Projets Personnels",

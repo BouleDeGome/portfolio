@@ -24,7 +24,10 @@ const projectsData = {
         schemas: ["./img/Schéma/GourmetCo/Schéma - GourmetCo.webp"],
         demoLink: "#",
         files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure GourmetCo.pdf" },
+            { name: "📄 Documentation Stormshield", url: "./fch/Documentations/Gourmet - Documentation Stormshield.pdf" },
+            { name: "📄 Documentation AD/DHCP", url: "./fch/Documentations/Gourmet - Documentation AD-DHCP.pdf" },
+            { name: "📄 Documentation Centreon", url: "./fch/Documentations/GourmetCo - Documentation Centreon.pdf" },
+            { name: "📄 Documentation OwnCloud", url: "./fch/Documentations/GourmetCo - Documentation OwnCloud.pdf" },
             { name: "📄 Sujet", url: "./fch/Sujets/Sujet - GourmetCo.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/GourmetCo/Schéma - GourmetCo.webp" }
         ]

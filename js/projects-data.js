@@ -71,8 +71,24 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUniver   .docx" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
             { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
+        ]
+    },
+    "Htldville": {
+        title: "Infrastructure Hôtel de ville",
+        category: "SISR",
+        description: "Déploiement d'une infrastructure obsolète et ajout de serveurs récents pour migration.",
+        tags: ["Migration Windows", "WindowsServer", "AD", "DHCP"],
+        docLink: "",
+        docType: "Documentation",
+        schemas: ["./img/Schéma/NexaHost/Schéma - Hôtel de ville.webp"],
+        demoLink: "#",
+        files: [
+            { name: "📄 Documentation AD", url: "./fch/Documentations/Hôtel de ville - Documentation AD-DNS.pdf" },
+            { name: "📄 Documentation DHCP", url: "./fch/Documentations/Hôtel de ville - Documentation DHCP.pdf" },
+            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - Hôtel de ville.docx" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - Hôtel de ville.webp" }
         ]
     },
     "nexforma": {

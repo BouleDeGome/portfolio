@@ -100,6 +100,7 @@ const projectsData = {
         files: [
             { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
             { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
+            { name: "👥​ Trello", url: "https://trello.com/b/XMhnwYfr/techuniverse" },
             { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
         ]
     },

@@ -69,7 +69,7 @@ const projectsData = {
             { name: "📄 Documentation Centreon", url: "./fch/Documentations/GourmetCo - Documentation Centreon.pdf" },
             { name: "📄 Documentation OwnCloud", url: "./fch/Documentations/GourmetCo - Documentation OwnCloud.pdf" },
             { name: "📄 Sujet", url: "./fch/Sujets/Sujet - GourmetCo.docx" },
-            { name: "👥​ Tableau des planifications", url: "https://trello.com/b/XMhnwYfr/techuniverse" },
+            { name: "👥​ Tableau des planifications", url: "./img/Tableau-tâches.png" },
             { name: "🖼️ Schéma", url: "./img/Schéma/GourmetCo/Schéma - GourmetCo.webp" }
         ]
     },

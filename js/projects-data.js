@@ -66,8 +66,8 @@ const projectsData = {
         files: [
             { name: "📄 Documentation Stormshield", url: "./fch/Documentations/Gourmet - Documentation Stormshield.pdf" },
             { name: "📄 Documentation AD/DHCP", url: "./fch/Documentations/Gourmet - Documentation AD-DHCP.pdf" },
-            { name: "📄 Documentation Centreon", url: "./fch/Documentations/GourmetCo - Documentation Centreon.pdf" },
-            { name: "📄 Documentation OwnCloud", url: "./fch/Documentations/GourmetCo - Documentation OwnCloud.pdf" },
+            { name: "📄 Documentation Centreon", url: "./fch/Documentations/Gourmet - Documentation Centreon.pdf" },
+            { name: "📄 Documentation OwnCloud", url: "./fch/Documentations/Gourmet - Documentation OwnCloud.pdf" },
             { name: "📄 Sujet", url: "./fch/Sujets/Sujet - GourmetCo.docx" },
             { name: "👥​ Tableau des planifications", url: "./img/Tableau-tâches.png" },
             { name: "🖼️ Schéma", url: "./img/Schéma/GourmetCo/Schéma - GourmetCo.webp" }

@@ -155,7 +155,7 @@ const projectsData = {
             { name: "🔎 Site Web", url: "https://zelionhost.fr" },
             { name: "🛡️ Discord", url: "https://discord.gg/Hk5cT4Nybw" },
             { name: "🖼️ Schéma", url: "./img/Schéma/NexaHost/Schéma - Nexahost.webp" },
-            { name: "🖼️ cartographie d'infrastructure Live", url: "https://drive.google.com/file/d/1VYTPadkhGakxSgnIN4YiXYtk-59wcvrD/view?usp=sharing" }
+            { name: "🖼️ Cartographie d'infrastructure Live", url: "https://drive.google.com/file/d/1VYTPadkhGakxSgnIN4YiXYtk-59wcvrD/view?usp=sharing" }
         ]
     },
     "Calypsis": {

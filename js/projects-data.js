@@ -145,8 +145,8 @@ const projectsData = {
     "ZelionHost": {
         title: "Infrastructure ZelionHost",
         category: "SISR",
-        description: "Déploiement d'une infrastructure complète avec matérielle professionnelle. Voir ci-dessous",
-        tags: ["Proxmox", "OPNSense", "VLAN", "ReverseProxy", "Linux Bash", "Pterodactyl", "Plesk", "Docker", "VLAN", "Centreon", "HP Proliant", "HP iLO", "ECT..."],
+        description: "Déploiement d'une infrastructure complète avec matériel professionnel. Voir ci-dessous",
+        tags: ["Proxmox", "OPNSense", "VLAN", "ReverseProxy", "Linux Bash", "Pterodactyl", "Plesk", "Docker", "VLAN", "Centreon", "HP Proliant", "HP iLO", "ETC..."],
         docLink: "https://github.com/BouleDeGome/Calypsis",
         docType: "Documentation",
         schemas: ["./img/Schéma/NexaHost/Schéma - Nexahost.webp"],

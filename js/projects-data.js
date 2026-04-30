@@ -116,7 +116,7 @@ const projectsData = {
         demoLink: "#",
         files: [
             { name: "📄 Documentation Switch", url: "./fch/Documentations/LouisDeFoix - Documentation switch.pdf" },
-            { name: "📄 Documentation StormShield", url: "./fch/Documentations/LouisDeFoix - Documentation StormShield.pdf" },
+            { name: "📄 Documentation StormShield", url: "./fch/Documentations/LouisDeFoix - Documentation Stormshield.pdf" },
             { name: "🖼️ Schéma", url: "./img/Schéma/LouisDeFoix/Schéma - LouisDeFoix.webp" }
         ]
     },

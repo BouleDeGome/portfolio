@@ -110,12 +110,12 @@ const projectsData = {
         tags: ["Windows Server", "Active Directory", "Windows NPS", "StormShield", "CLI"],
         docLink: "",
         docType: "Documentation",
-        schemas: ["./img/Schéma/LPO/Schéma - LPOLouisDeFoix.webp"],
+        schemas: ["./img/Schéma/LouisDeFoix/Schéma - LouisDeFoix.webp"],
         demoLink: "#",
         files: [
-            { name: "📄 Documentation", url: "./fch/Documentations/Documentation - Infrastructure TechUnivers.pdf" },
-            { name: "📄 Sujet", url: "./fch/Sujets/Sujet - TechUnivers.docx" },
-            { name: "🖼️ Schéma", url: "./img/Schéma/TechUnivers/Schéma - TechUnivers.webp" }
+            { name: "📄 Documentation Switch", url: "./fch/Documentations/LouisDeFoix - Documentation switch.pdf" },
+            { name: "📄 Documentation StormShield", url: "./fch/Documentations/LouisDeFoix - Documentation StormShield.pdf" },
+            { name: "🖼️ Schéma", url: "./img/Schéma/LouisDeFoix/Schéma - LouisDeFoix.webp" }
         ]
     },
     "Htldville": {
